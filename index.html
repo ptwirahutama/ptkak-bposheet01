@@ -805,19 +805,22 @@ window.onload = async function() {
 
  loadSavedAdjustment();
 
- // Menggunakan POST untuk melewati blokir CORS di Netlify
  try {
+   console.log("Mulai mengambil data user dari server...");
    let users = await callGasApiPost('getUserListForLogin');
-   if (users && users.length > 0) {
+   console.log("Respon server diterima:", users);
+   
+   if (users && Array.isArray(users) && users.length > 0) {
      populateUsers(users);
    } else {
+     console.warn("Array user kosong atau format tidak sesuai:", users);
      let select = document.getElementById('loginUserSelect');
-     if (select) select.innerHTML = '<option value="">-- Gagal Memuat User / Sheet Kosong --</option>';
+     if (select) select.innerHTML = '<option value="">-- Data User Kosong / Format Salah --</option>';
    }
  } catch (err) {
-   console.error("Gagal koneksi awal API GAS:", err);
+   console.error("Gagal total saat koneksi ke API GAS:", err);
    let select = document.getElementById('loginUserSelect');
-   if (select) select.innerHTML = '<option value="">-- Gagal Terhubung ke Server --</option>';
+   if (select) select.innerHTML = '<option value="">-- Error: ' + err.message + ' --</option>';
  }
 };
 
