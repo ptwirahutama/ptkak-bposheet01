@@ -959,10 +959,11 @@ flex-shrink: 0;
    }
  }
 
- function populateFilterProyekDropdown(proyekList) {
+function populateFilterProyekDropdown(proyekList) {
    let select = document.getElementById('filterProyekRekap');
    if (!select) return;
-   let currentVal = select.value;
+   let currentVal = select.value; // Simpan pilihan proyek yang sedang dipilih user
+   
    select.innerHTML = '<option value="ALL">-- Semua Proyek --</option>';
    
    let uniqueProyek = {};
@@ -975,8 +976,10 @@ flex-shrink: 0;
        select.appendChild(opt);
      }
    });
+   
+   // Kembalikan nilai pilihan user jika masih ada dalam list
    select.value = currentVal;
- }
+}
 
  function renderRekapanHarian(data) {
    if (!data) return;
