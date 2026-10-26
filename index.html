@@ -191,13 +191,9 @@ flex-shrink: 0;
  th { background: #0f172a; color: var(--text-muted); font-weight: 700; padding: 4px 6px; position: sticky; top: 0; border-bottom: 1px solid var(--card-border); font-size: 8.5px; vertical-align: middle; }
  td { padding: 3px 6px; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: middle; }
  
- /* Penjajaran teks heading dan isi tabel secara center & rapi */
- th:first-child, td:first-child { text-align: left; }
- th:nth-child(2), td:nth-child(2) { text-align: left; }
- th:nth-child(3), td:nth-child(3) { text-align: center; }
- th:nth-child(4), td:nth-child(4) { text-align: right; }
- th:nth-child(5), td:nth-child(5) { text-align: right; }
- th:nth-child(6), td:nth-child(6) { text-align: right; }
+ /* Penjajaran teks heading dan isi tabel Matriks */
+ #tabelBody td:first-child, #tabelBody th:first-child { text-align: left; }
+ #tabelBody td, #tabelBody th { text-align: right; }
 
  .bg-akumulasi { background: rgba(245, 158, 11, 0.15); color: #fbbf24; font-weight: 700; }
  .bg-mandiri { background: rgba(16, 185, 129, 0.15); color: #34d399; font-weight: 700; }
@@ -604,12 +600,12 @@ flex-shrink: 0;
  <table>
  <thead>
  <tr>
- <th>Material</th>
- <th>SSD (kg)</th>
- <th>MC (kg)</th>
- <th>MC ADJ</th>
- <th>BATCH (kg)</th>
- <th>AKUMULASI</th>
+ <th style="text-align:left;">Material</th>
+ <th style="text-align:right;">SSD (kg)</th>
+ <th style="text-align:right;">MC (kg)</th>
+ <th style="text-align:right;">MC ADJ</th>
+ <th style="text-align:right;">BATCH (kg)</th>
+ <th style="text-align:right;">AKUMULASI</th>
  </tr>
  </thead>
  <tbody id="tabelBody">
@@ -657,11 +653,11 @@ flex-shrink: 0;
  <table>
  <thead>
  <tr>
- <th style="width:16px;">#</th>
- <th>Proyek</th>
- <th>Mutu</th>
- <th id="thHeaderVol">Vol (m³)</th>
- <th>Rit</th>
+ <th style="width:16px; text-align:center;">#</th>
+ <th style="text-align:left;">Proyek</th>
+ <th style="text-align:center;">Mutu</th>
+ <th id="thHeaderVol" style="text-align:right;">Vol (m³)</th>
+ <th style="text-align:right;">Rit</th>
  </tr>
  </thead>
  <tbody id="tabelRekapanBody">
@@ -678,12 +674,12 @@ flex-shrink: 0;
  <table>
  <thead>
  <tr>
- <th style="width:12px;">#</th>
- <th>Jam</th>
- <th>No TM</th>
- <th>No Plat / Driver / Proyek</th>
- <th>Mutu</th>
- <th class="col-vol-data">Vol</th>
+ <th style="width:16px; text-align:center;">#</th>
+ <th style="text-align:center;">Jam</th>
+ <th style="text-align:center;">No TM</th>
+ <th style="text-align:left;">No Plat / Driver</th>
+ <th style="text-align:center;">Mutu</th>
+ <th class="col-vol-data" style="text-align:right;">Vol</th>
  </tr>
  </thead>
  <tbody id="tabelDrillDownBody">
@@ -1439,12 +1435,12 @@ flex-shrink: 0;
 
  let tr = document.createElement('tr');
  tr.innerHTML = `
- <td><b>${mat.name}</b></td>
- <td>${valSsd.toFixed(1)}</td>
- <td>${valMc.toFixed(1)}</td>
- <td>${valMcAdj.toFixed(1)}</td>
- <td><b>${valBatch.toFixed(1)}</b></td>
- <td class="${mat.isAgregat ? 'bg-akumulasi' : 'bg-mandiri'}">${valAkumulasi.toFixed(1)}</td>
+ <td style="text-align:left;"><b>${mat.name}</b></td>
+ <td style="text-align:right;">${valSsd.toFixed(1)}</td>
+ <td style="text-align:right;">${valMc.toFixed(1)}</td>
+ <td style="text-align:right;">${valMcAdj.toFixed(1)}</td>
+ <td style="text-align:right;"><b>${valBatch.toFixed(1)}</b></td>
+ <td class="${mat.isAgregat ? 'bg-akumulasi' : 'bg-mandiri'}" style="text-align:right;">${valAkumulasi.toFixed(1)}</td>
  `;
  tbody.appendChild(tr);
  });
@@ -1453,12 +1449,12 @@ flex-shrink: 0;
  let totalAkhirBatchKg = sumBatch * jmBatch;
  tfoot.innerHTML = `
  <tr class="tr-total">
- <td>TOTAL BERAT</td>
- <td>${sumSsd.toFixed(1)} kg</td>
- <td>${sumMc.toFixed(1)} kg</td>
- <td>${sumMcAdj.toFixed(1)} kg</td>
- <td>${sumBatch.toFixed(1)} kg</td>
- <td>${totalAkhirBatchKg.toFixed(1)} kg (${(totalAkhirBatchKg/1000).toFixed(2)} T)</td>
+ <td style="text-align:left;">TOTAL BERAT</td>
+ <td style="text-align:right;">${sumSsd.toFixed(1)} kg</td>
+ <td style="text-align:right;">${sumMc.toFixed(1)} kg</td>
+ <td style="text-align:right;">${sumMcAdj.toFixed(1)} kg</td>
+ <td style="text-align:right;">${sumBatch.toFixed(1)} kg</td>
+ <td style="text-align:right;">${totalAkhirBatchKg.toFixed(1)} kg (${(totalAkhirBatchKg/1000).toFixed(2)} T)</td>
  </tr>
  `;
  }
