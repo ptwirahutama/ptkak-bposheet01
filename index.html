@@ -24,42 +24,19 @@
  --input-border: #475569;
  }
 
- * { 
-box-sizing: border-box; 
-font-family: 'Inter', sans-serif; 
-}
+ * { box-sizing: border-box; font-family: 'Inter', sans-serif; }
  
-body, html {
- margin: 0; 
-padding: 0;
- width: 100vw; 
-height: 100vh;
- overflow: hidden;
- background-color: var(--bg-body);
- color: var(--text-main);
- font-size: 10px;
+ body, html {
+ margin: 0; padding: 0; width: 100vw; height: 100vh;
+ overflow: hidden; background-color: var(--bg-body); color: var(--text-main); font-size: 10px;
  }
 
- .app-viewport {
- display: flex; 
-flex-direction: column;
- height: 100vh; 
-padding: 5px 8px; 
-gap: 5px;
- }
+ .app-viewport { display: flex; flex-direction: column; height: 100vh; padding: 5px 8px; gap: 5px; }
 
  /* HEADER BAR MODERN PT KARYA ADI KENCANA */
  .header-bar {
- height: 48px;
- flex-shrink: 0;
- background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
- border: 1px solid var(--card-border);
- border-radius: 6px;
- display: flex;
- justify-content: space-between;
- align-items: center;
- padding: 0 12px;
- box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+ height: 48px; flex-shrink: 0; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+ border: 1px solid var(--card-border); border-radius: 6px; display: flex; justify-content: space-between; align-items: center; padding: 0 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
  }
 
  .header-left { display: flex; align-items: center; gap: 10px; }
@@ -76,16 +53,8 @@ gap: 5px;
  .user-info-badge { font-size: 9.5px; color: var(--text-muted); background: #0f172a; padding: 3px 8px; border-radius: 4px; border: 1px solid var(--card-border); }
 
  .status-badge {
- background: rgba(16, 185, 129, 0.15); 
-border: 1px solid rgba(16, 185, 129, 0.3);
- color: #34d399; 
-padding: 2px 6px; 
-border-radius: 20px; 
-font-size: 8.5px; 
-font-weight: 600;
- display: flex; 
-align-items: center; 
-gap: 4px;
+ background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); color: #34d399; 
+ padding: 2px 6px; border-radius: 20px; font-size: 8.5px; font-weight: 600; display: flex; align-items: center; gap: 4px;
  }
  .pulse-dot { width: 5px; height: 5px; background-color: #34d399; border-radius: 50%; box-shadow: 0 0 8px #34d399; animation: pulse 1.5s infinite; }
  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
@@ -95,86 +64,37 @@ gap: 4px;
  .clock-date { font-size: 8px; color: var(--text-muted); }
 
  .dashboard-grid {
- display: grid;
- grid-template-columns: minmax(210px, 1fr) minmax(380px, 2.2fr) minmax(230px, 1.1fr);
- gap: 5px; 
-flex: 1; 
-min-height: 0; 
-transition: all 0.3s ease;
+ display: grid; grid-template-columns: minmax(210px, 1fr) minmax(380px, 2.2fr) minmax(230px, 1.1fr);
+ gap: 5px; flex: 1; min-height: 0; transition: all 0.3s ease;
  }
 
  .dashboard-grid.client-view { grid-template-columns: 1fr !important; }
 
  .dash-card {
- background: var(--card-bg); 
-border: 1px solid var(--card-border);
- border-radius: 6px; 
-padding: 6px; 
-display: flex; 
-flex-direction: column;
- gap: 4px; 
-min-height: 0; 
-overflow: hidden;
+ background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 6px; 
+ padding: 6px; display: flex; flex-direction: column; gap: 4px; min-height: 0; overflow: hidden;
  }
  .card-title {
- font-size: 9.5px; 
-font-weight: 700; 
-color: #38bdf8; 
-text-transform: uppercase;
- letter-spacing: 0.5px; 
-display: flex; 
-align-items: center; 
-justify-content: space-between;
- border-bottom: 1px solid rgba(255,255,255,0.08); 
-padding-bottom: 3px; 
-margin-bottom: 1px;
+ font-size: 9.5px; font-weight: 700; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.5px; 
+ display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 3px; margin-bottom: 1px;
  }
 
  .form-group { display: flex; flex-direction: column; gap: 1px; }
  label { font-size: 8.5px; font-weight: 600; color: var(--text-muted); }
  input, select {
- width: 100%; 
-background-color: var(--input-bg); 
-border: 1px solid var(--input-border);
- color: var(--text-main); 
-padding: 2px 5px; 
-border-radius: 4px; 
-font-size: 9.5px;
- font-weight: 500; 
-outline: none;
+ width: 100%; background-color: var(--input-bg); border: 1px solid var(--input-border);
+ color: var(--text-main); padding: 2px 5px; border-radius: 4px; font-size: 9.5px; font-weight: 500; outline: none;
  }
  input:focus, select:focus { border-color: #38bdf8; box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2); }
  input[readonly] { background-color: #090d16; color: #38bdf8; border-color: #1e293b; font-weight: 700; }
 
  .btn-toggle {
- padding: 4px 6px; 
-font-size: 9px; 
-font-weight: 700; 
-border: none; 
-border-radius: 4px;
- cursor: pointer; 
-width: 100%; 
-display: flex; 
-align-items: center; 
-justify-content: center; 
-gap: 4px;
+ padding: 4px 6px; font-size: 9px; font-weight: 700; border: none; border-radius: 4px; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 4px;
  }
  .btn-on { background: #059669; color: white; }
  .btn-off { background: #475569; color: #cbd5e1; }
  .btn-action {
- background: linear-gradient(135deg, #2563eb, #1d4ed8); 
-color: white; 
-border: none;
- padding: 6px; 
-font-weight: 800; 
-font-size: 10.5px; 
-border-radius: 5px; 
-cursor: pointer;
- width: 100%; 
-letter-spacing: 0.5px; 
-box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
- margin-top: auto; 
-flex-shrink: 0;
+ background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white; border: none; padding: 6px; font-weight: 800; font-size: 10.5px; border-radius: 5px; cursor: pointer; width: 100%; letter-spacing: 0.5px; box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3); margin-top: auto; flex-shrink: 0;
  }
  .btn-action:hover { background: linear-gradient(135deg, #1d4ed8, #1e40af); }
  .btn-sec { background: #334155; color: white; border: none; padding: 2px 5px; font-size: 8px; font-weight: 600; border-radius: 3px; cursor: pointer; }
@@ -219,54 +139,16 @@ flex-shrink: 0;
 
  /* TOMBOL CHAT & POPUP DI KIRI */
  #chat-fab-btn {
- position: fixed !important;
- bottom: 25px !important;
- left: 25px !important;
- right: auto !important;
- z-index: 999999 !important;
- width: 58px;
- height: 58px;
- border-radius: 50%;
- background: #2563eb;
- color: white;
- border: none;
- font-size: 24px;
- cursor: pointer;
- box-shadow: 0 4px 15px rgba(0,0,0,0.4);
- display: flex;
- align-items: center;
- justify-content: center;
- transition: transform 0.2s ease;
+ position: fixed !important; bottom: 25px !important; left: 25px !important; right: auto !important; z-index: 999999 !important;
+ width: 58px; height: 58px; border-radius: 50%; background: #2563eb; color: white; border: none; font-size: 24px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease;
  }
  #chat-fab-btn:hover { transform: scale(1.08); }
 
- .chat-badge {
- position: absolute;
- top: -2px;
- right: -2px;
- background-color: #ef4444;
- color: white;
- border-radius: 50%;
- padding: 3px 8px;
- font-size: 11px;
- font-weight: bold;
- }
+ .chat-badge { position: absolute; top: -2px; right: -2px; background-color: #ef4444; color: white; border-radius: 50%; padding: 3px 8px; font-size: 11px; font-weight: bold; }
 
  #v3-chat-popup {
- position: fixed !important;
- bottom: 95px !important;
- left: 25px !important;
- right: auto !important;
- width: 340px;
- height: 450px;
- background: #1e293b;
- border: 1px solid #334155;
- border-radius: 12px;
- z-index: 999999 !important;
- box-shadow: 0 8px 24px rgba(0,0,0,0.5);
- flex-direction: column;
- overflow: hidden;
- color: white;
+ position: fixed !important; bottom: 95px !important; left: 25px !important; right: auto !important; width: 340px; height: 450px;
+ background: #1e293b; border: 1px solid #334155; border-radius: 12px; z-index: 999999 !important; box-shadow: 0 8px 24px rgba(0,0,0,0.5); flex-direction: column; overflow: hidden; color: white;
  }
  .chat-popup-hidden { display: none !important; }
  .chat-header { background: #0f172a; padding: 12px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; }
@@ -274,37 +156,9 @@ flex-shrink: 0;
  .chat-body { flex: 1; padding: 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; background-color: #0f172a; }
  .chat-msg { background: #334155; padding: 8px 12px; border-radius: 8px; max-width: 80%; display: flex; flex-direction: column; font-size: 11px; }
  .chat-msg.me { background: #2563eb; align-self: flex-end; }
- .chat-msg.intercom { background: #b91c1c; align-self: center; width: 90%; text-align: center; }
- .chat-quick-actions { display: flex; gap: 4px; padding: 6px; background: #0f172a; overflow-x: auto; border-top: 1px solid #334155; }
- .chat-quick-actions button { background: #334155; color: white; border: none; padding: 4px 8px; border-radius: 4px; font-size: 10px; cursor: pointer; white-space: nowrap; }
  .chat-footer { padding: 10px; display: flex; gap: 6px; background: #0f172a; border-top: 1px solid #334155; }
  .chat-footer input { flex: 1; background: #1e293b; border: 1px solid #334155; color: white; padding: 6px 10px; border-radius: 6px; font-size: 11px; }
  .chat-footer button { background: #2563eb; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: 700; }
-
- #toast-container {
- position: fixed; top: 20px; right: 20px; z-index: 10000; display: flex; flex-direction: column; gap: 10px;
- }
- .toast-item {
- min-width: 250px; padding: 12px 18px; border-radius: 8px; color: white; font-size: 13px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); animation: fadeInRight 0.3s ease;
- }
- @keyframes fadeInRight {
- from { opacity: 0; transform: translateX(50px); }
- to { opacity: 1; transform: translateX(0); }
- }
- @keyframes pulseBadge {
- 0% { transform: scale(0.9); opacity: 0.8; }
- 100% { transform: scale(1.2); opacity: 1; }
- }
-
- @media screen and (max-width: 1024px) {
- body, html { height: auto !important; overflow-y: auto !important; overflow-x: hidden !important; }
- .app-viewport { height: auto !important; min-height: 100vh; }
- .dashboard-grid { grid-template-columns: 1fr !important; height: auto !important; overflow: visible !important; }
- .dash-card { min-height: auto !important; overflow: visible !important; }
- .table-container { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
- #chat-fab-btn { bottom: 15px !important; left: 15px !important; right: auto !important; width: 48px !important; height: 48px !important; font-size: 18px !important; }
- #v3-chat-popup { bottom: 70px !important; left: 10px !important; right: auto !important; width: auto !important; }
- }
  </style>
 </head>
 <body>
@@ -343,13 +197,11 @@ flex-shrink: 0;
 
  <div class="user-info-badge">
  <i class="fa-solid fa-user-gear" style="color:#38bdf8;"></i> 
-<span id="displayUserRole" style="color:#f59e0b; font-weight:700;">[ROLE]</span>: 
-<b id="displayOperatorName" style="color:#fff;">-</b>
+ <span id="displayUserRole" style="color:#f59e0b; font-weight:700;">[ROLE]</span>: 
+ <b id="displayOperatorName" style="color:#fff;">-</b>
  </div>
 
- <div class="status-badge">
- <div class="pulse-dot"></div> ONLINE
- </div>
+ <div class="status-badge"><div class="pulse-dot"></div> ONLINE</div>
 
  <div class="clock-widget">
  <div id="realtimeTime" class="clock-time">00:00:00</div>
@@ -367,27 +219,19 @@ flex-shrink: 0;
  <div id="v3-chat-popup" class="chat-popup-hidden" style="display: none;">
  <div class="chat-header">
  <div class="chat-title" style="display:flex; align-items:center; gap:6px; font-weight:700; font-size:12px;">
- <span class="status-dot"></span>
  <span>LIVE CHAT</span>
  </div>
  <button class="chat-close-btn" onclick="toggleChatPopup()">✕</button>
  </div>
-
  <div style="padding: 6px 12px; background: #1e293b; border-bottom: 1px solid #334155; display: flex; align-items: center; gap: 8px;">
  <small style="color: #94a3b8; white-space: nowrap;">Chat Ke:</small>
  <select id="chat-target-select" style="width: 100%; background: #0f172a; color: #fff; border: 1px solid #475569; padding: 4px 8px; border-radius: 4px; font-size: 11px;">
  <option value="">-- Pilih Tujuan Chat --</option>
  </select>
  </div>
-
  <div id="chat-messages-body" class="chat-body">
- <div class="chat-msg system">
- <strong>SYSTEM</strong>
- <span>Pilih tujuan chat di atas.</span>
- <small>System</small>
+ <div class="chat-msg system"><strong>SYSTEM</strong><span>Pilih tujuan chat di atas.</span></div>
  </div>
- </div>
-
  <div class="chat-footer">
  <input type="text" id="chat-input-text" placeholder="Ketik pesan..." onkeypress="handleChatKeyPress(event)">
  <button id="chat-send-btn" onclick="submitChatMessage()">Kirim</button>
@@ -414,51 +258,27 @@ flex-shrink: 0;
  </div>
 
  <div class="dashboard-grid" id="mainDashboardGrid">
-<div id="colLogistik" style="display:flex; flex-direction:column; gap:5px; min-height:0;">
+ <div id="colLogistik" style="display:flex; flex-direction:column; gap:5px; min-height:0;">
  <div class="dash-card">
  <div class="card-title"><i class="fa-solid fa-truck-ramp-box"></i> Data Logistik & TM</div>
- <div class="form-group">
- <label for="customer">Customer:</label>
- <select id="customer"></select>
- </div>
- <div class="form-group">
- <label for="proyek">Nama Proyek:</label>
- <select id="proyek"></select>
+ <div class="form-group"><label for="customer">Customer:</label><select id="customer"></select></div>
+ <div class="form-group"><label for="proyek">Nama Proyek:</label><select id="proyek"></select></div>
+ <div class="grid-2">
+ <div class="form-group"><label for="nominalSlump">Nominal Slump:</label><input type="text" id="nominalSlump" placeholder="12 ± 2 cm"></div>
+ <div class="form-group"><label for="noTM">No. Mixer (TM):</label><select id="noTM" onchange="autoFillTMDetails()"></select></div>
  </div>
  <div class="grid-2">
- <div class="form-group">
- <label for="nominalSlump">Nominal Slump:</label>
- <input type="text" id="nominalSlump" placeholder="12 ± 2 cm">
- </div>
- <div class="form-group">
- <label for="noTM">No. Mixer (TM):</label>
- <select id="noTM" onchange="autoFillTMDetails()"></select>
- </div>
- </div>
- <div class="grid-2">
- <div class="form-group">
- <label for="noPlat">No. Polisi:</label>
- <input type="text" id="noPlat" readonly placeholder="-">
- </div>
-<div class="form-group">
- <label for="driver-select">Driver:</label>
- <select id="driver-select" class="form-control">
- <option value="">-- Pilih Driver --</option>
- </select>
-</div>
+ <div class="form-group"><label for="noPlat">No. Polisi:</label><input type="text" id="noPlat" readonly placeholder="-"></div>
+ <div class="form-group"><label for="driver-select">Driver:</label><select id="driver-select" class="form-control"><option value="">-- Pilih Driver --</option></select></div>
  </div>
  </div>
 
-<div style="background:#0f172a; padding:5px; border-radius:4px; border:1px solid var(--card-border); margin-bottom:6px;">
+ <div style="background:#0f172a; padding:5px; border-radius:4px; border:1px solid var(--card-border); margin-bottom:6px;">
  <div style="font-weight:700; font-size:8.5px; color:#38bdf8; margin-bottom:3px;"><i class="fa-solid fa-truck-droplet"></i> FORM RESTOK SILO</div>
  <div class="grid-2" style="margin-bottom:3px;">
  <input type="date" id="tglRestok" style="padding:2px 4px;">
  <select id="pilihSiloRestok" style="padding:2px 4px;">
- <option value="Silo 1 (Semen)">Silo 1</option>
- <option value="Silo 2 (Semen)">Silo 2</option>
- <option value="Silo 3 (Semen)">Silo 3</option>
- <option value="Silo 4 (Semen)">Silo 4</option>
- <option value="Silo FlyAsh">Silo FA</option>
+ <option value="Silo 1 (Semen)">Silo 1</option><option value="Silo 2 (Semen)">Silo 2</option><option value="Silo 3 (Semen)">Silo 3</option><option value="Silo 4 (Semen)">Silo 4</option><option value="Silo FlyAsh">Silo FA</option>
  </select>
  </div>
  <div style="display:flex; gap:3px;">
@@ -472,30 +292,13 @@ flex-shrink: 0;
  <span><i class="fa-solid fa-database"></i> Level Silo Semen</span>
  <button onclick="refreshStokSiloManual()" class="btn-sec" title="Refresh Stok"><i class="fa-solid fa-rotate"></i></button>
  </div>
- 
-<div class="silo-container">
- <div class="silo-item">
- <div class="silo-header"><span>Silo 1 (Semen)</span><b id="stokS1" style="color:#38bdf8;">0 Kg</b></div>
- <div class="silo-bar-bg"><div class="silo-bar-fill" id="barS1" style="width: 0%;"></div></div>
+ <div class="silo-container">
+ <div class="silo-item"><div class="silo-header"><span>Silo 1 (Semen)</span><b id="stokS1" style="color:#38bdf8;">0 Kg</b></div><div class="silo-bar-bg"><div class="silo-bar-fill" id="barS1" style="width: 0%;"></div></div></div>
+ <div class="silo-item"><div class="silo-header"><span>Silo 2 (Semen)</span><b id="stokS2" style="color:#38bdf8;">0 Kg</b></div><div class="silo-bar-bg"><div class="silo-bar-fill" id="barS2" style="width: 0%;"></div></div></div>
+ <div class="silo-item"><div class="silo-header"><span>Silo 3 (Semen)</span><b id="stokS3" style="color:#38bdf8;">0 Kg</b></div><div class="silo-bar-bg"><div class="silo-bar-fill" id="barS3" style="width: 0%;"></div></div></div>
+ <div class="silo-item"><div class="silo-header"><span>Silo 4 (Semen)</span><b id="stokS4" style="color:#38bdf8;">0 Kg</b></div><div class="silo-bar-bg"><div class="silo-bar-fill" id="barS4" style="width: 0%;"></div></div></div>
+ <div class="silo-item" style="border-color: rgba(56, 189, 248, 0.3);"><div class="silo-header"><span>Silo Fly Ash</span><b id="stokFA" style="color:#34d399;">0 Kg</b></div><div class="silo-bar-bg"><div class="silo-bar-fill" id="barFA" style="width: 0%; background:#34d399;"></div></div></div>
  </div>
- <div class="silo-item">
- <div class="silo-header"><span>Silo 2 (Semen)</span><b id="stokS2" style="color:#38bdf8;">0 Kg</b></div>
- <div class="silo-bar-bg"><div class="silo-bar-fill" id="barS2" style="width: 0%;"></div></div>
- </div>
- <div class="silo-item">
- <div class="silo-header"><span>Silo 3 (Semen)</span><b id="stokS3" style="color:#38bdf8;">0 Kg</b></div>
- <div class="silo-bar-bg"><div class="silo-bar-fill" id="barS3" style="width: 0%;"></div></div>
- </div>
- <div class="silo-item">
- <div class="silo-header"><span>Silo 4 (Semen)</span><b id="stokS4" style="color:#38bdf8;">0 Kg</b></div>
- <div class="silo-bar-bg"><div class="silo-bar-fill" id="barS4" style="width: 0%;"></div></div>
- </div>
- <div class="silo-item" style="border-color: rgba(56, 189, 248, 0.3);">
- <div class="silo-header"><span>Silo Fly Ash</span><b id="stokFA" style="color:#34d399;">0 Kg</b></div>
- <div class="silo-bar-bg"><div class="silo-bar-fill" id="barFA" style="width: 0%; background:#34d399;"></div></div>
- </div>
- </div>
-
  <div class="silo-item" style="background: rgba(37, 99, 235, 0.15); border: 1px solid #2563eb; margin-top:2px;">
  <div class="silo-header" style="font-size: 9px; font-weight: 800;">
  <span style="color: #fbbf24;"><i class="fa-solid fa-calculator"></i> TOTAL SEMEN (SILO 1 - 4)</span>
@@ -505,50 +308,20 @@ flex-shrink: 0;
  </div>
  </div>
 
-<div id="colBatching" style="display:flex; flex-direction:column; gap:5px; min-height:0;">
+ <div id="colBatching" style="display:flex; flex-direction:column; gap:5px; min-height:0;">
  <div class="dash-card">
  <div class="card-title"><i class="fa-solid fa-sliders"></i> Parameter Formula & Batching</div>
- 
  <div class="grid-2" style="margin-bottom: 4px;">
- <div class="form-group">
- <label for="selectMutuBeton">Kode Mix Desain:</label>
- <select id="selectMutuBeton" onchange="onMutuBetonChange()">
- <option value="">-- Pilih Kode Mix --</option>
- </select>
+ <div class="form-group"><label for="selectMutuBeton">Kode Mix Desain:</label><select id="selectMutuBeton" onchange="onMutuBetonChange()"><option value="">-- Pilih Kode Mix --</option></select></div>
+ <div class="form-group"><label for="selectMutu">Mutu Beton:</label><select id="selectMutu" onchange="onKodeMixChange()"><option value="">-- Pilih Mutu --</option></select></div>
  </div>
- <div class="form-group">
- <label for="selectMutu">Mutu Beton:</label>
- <select id="selectMutu" onchange="onKodeMixChange()">
- <option value="">-- Pilih Mutu --</option>
- </select>
- </div>
- </div>
-
  <div class="grid-3">
- <div class="form-group">
- <label for="siloSemenDipilih">Silo Semen:</label>
- <select id="siloSemenDipilih">
- <option value="Silo 1 (Semen)">Silo 1</option>
- <option value="Silo 2 (Semen)">Silo 2</option>
- <option value="Silo 3 (Semen)">Silo 3</option>
- <option value="Silo 4 (Semen)">Silo 4</option>
- </select>
+ <div class="form-group"><label for="siloSemenDipilih">Silo Semen:</label><select id="siloSemenDipilih"><option value="Silo 1 (Semen)">Silo 1</option><option value="Silo 2 (Semen)">Silo 2</option><option value="Silo 3 (Semen)">Silo 3</option><option value="Silo 4 (Semen)">Silo 4</option></select></div>
+ <div class="form-group"><label for="totalVol">Vol Total (m³):</label><input type="number" id="totalVol" value="6" oninput="hitungSemua()"></div>
+ <div class="form-group"><label for="jumlahBatch">Jm Batch:</label><input type="number" id="jumlahBatch" value="3" oninput="hitungSemua()"></div>
  </div>
- <div class="form-group">
- <label for="totalVol">Vol Total (m³):</label>
- <input type="number" id="totalVol" value="6" oninput="hitungSemua()">
- </div>
- <div class="form-group">
- <label for="jumlahBatch">Jm Batch:</label>
- <input type="number" id="jumlahBatch" value="3" oninput="hitungSemua()">
- </div>
- </div>
-
  <div class="grid-3" style="align-items: center; margin-top: 4px;">
- <div class="form-group">
- <label for="volPerBatch">Vol/Batch (m³):</label>
- <input type="text" id="volPerBatch" readonly>
- </div>
+ <div class="form-group"><label for="volPerBatch">Vol/Batch (m³):</label><input type="text" id="volPerBatch" readonly></div>
  <button id="btnToggleAir" class="btn-toggle btn-on" onclick="toggleAir()"><i class="fa-solid fa-droplet"></i> ADJ AIR: ON</button>
  <button id="btnToggleSA" class="btn-toggle btn-off" onclick="toggleSA()"><i class="fa-solid fa-percent"></i> ADJ S/A: OFF</button>
  </div>
@@ -559,7 +332,6 @@ flex-shrink: 0;
  <span><i class="fa-solid fa-compass-drafting"></i> Koreksi Moisture & Aggregate</span>
  <button onclick="simpanParameterAdjustment()" class="btn-sec" style="background:#059669;"><i class="fa-solid fa-floppy-disk"></i> Simpan Parameter</button>
  </div>
-
  <div id="panelAirOn" class="grid-4">
  <div class="form-group"><label for="adjAirUi">Adj Air (kg):</label><input type="number" id="adjAirUi" value="0" oninput="hitungSemua()"></div>
  <div class="form-group"><label for="mcP1_on">MC Pasir 1 (%):</label><input type="number" id="mcP1_on" value="3" oninput="hitungSemua()"></div>
@@ -572,7 +344,6 @@ flex-shrink: 0;
  S/A SSD:<b id="indSaSsd" style="color:#38bdf8; margin:0 2px;">0</b>%|MC:<b id="indSaMc" style="color:#ef4444; margin-left:2px;">0</b>%
  </div>
  </div>
-
  <div id="panelAirOff" style="display:none;">
  <div class="grid-4">
  <div class="form-group"><label for="mcP1_off">MC Pasir 1 (%):</label><input type="number" id="mcP1_off" value="3.0" oninput="hitungSemua()"></div>
@@ -585,7 +356,6 @@ flex-shrink: 0;
  <div class="form-group"><label for="absB2">Abs Batu 20-30 (%):</label><input type="number" id="absB2" value="2.5" oninput="hitungSemua()"></div>
  </div>
  </div>
-
  <div id="panelSaOn" style="display:none; margin-top:2px;">
  <div class="form-group" style="max-width: 200px;">
  <label for="targetSa">Target S/A Adjustment (%):</label>
@@ -608,41 +378,40 @@ flex-shrink: 0;
  <th style="text-align:right;">AKUMULASI</th>
  </tr>
  </thead>
- <tbody id="tabelBody">
- <tr><td colspan="6" style="text-align:center; color:var(--text-muted);">Memuat data...</td></tr>
- </tbody>
+ <tbody id="tabelBody"><tr><td colspan="6" style="text-align:center; color:var(--text-muted);">Memuat data...</td></tr></tbody>
  <tfoot id="tabelFooter"></tfoot>
  </table>
  </div>
  <button id="btnSimpan" class="btn-action" onclick="simpanBatching()"><i class="fa-solid fa-play"></i> START & SIMPAN DATA BATCHING</button>
  </div>
-</div>
+ </div>
 
+ <!-- KOLOM REKAP PRODUKSI DENGAN FILTER TANGGAL & PROYEK -->
  <div id="colRekapan" style="display:flex; flex-direction:column; gap:5px; min-height:0;">
  <div class="dash-card" style="height:100%;">
  <div class="card-title">
- <span><i class="fa-solid fa-chart-line"></i> Rekap Produksi Hari Ini (Cut-off 05:30)</span>
- <div style="display:flex; gap:4px; align-items:center;">
- <select id="filterProyekClient" onchange="renderRekapanHarian(globalRekapanDataCache)" style="display:none; width:auto; padding:1px 4px; font-size:8px;">
+ <span><i class="fa-solid fa-chart-line"></i> Rekap Produksi Hari Ini</span>
+ <button onclick="loadRekapanHarian()" class="btn-sec"><i class="fa-solid fa-arrows-rotate"></i></button>
+ </div>
+
+ <!-- FILTER TANGGAL & PROYEK DI ATAS REKAP -->
+ <div style="background:#0f172a; padding:4px; border-radius:4px; border:1px solid var(--card-border); display:grid; grid-template-columns: 1fr 1fr; gap:4px; margin-bottom:3px;">
+ <div class="form-group">
+ <label><i class="fa-solid fa-calendar"></i> TANGGAL:</label>
+ <input type="date" id="filterTanggalRekap" onchange="loadRekapanHarian()" style="padding:2px 4px; font-size:8.5px;">
+ </div>
+ <div class="form-group">
+ <label><i class="fa-solid fa-helmet-safety"></i> PROYEK:</label>
+ <select id="filterProyekRekap" onchange="loadRekapanHarian()" style="padding:2px 4px; font-size:8.5px;">
  <option value="ALL">-- Semua Proyek --</option>
  </select>
- <button onclick="loadRekapanHarian()" class="btn-sec"><i class="fa-solid fa-arrows-rotate"></i></button>
  </div>
  </div>
 
  <div class="summary-mini-grid">
- <div class="sum-card">
- <label>Proyek</label>
- <div class="val" id="summaryProyek">0</div>
- </div>
- <div class="sum-card">
- <label>Volume</label>
- <div class="val"><span id="summaryVolume">0</span><span style="font-size:7.5px; color:var(--text-muted);" id="unitVolLabel">m³</span></div>
- </div>
- <div class="sum-card">
- <label>Ritase</label>
- <div class="val"><span id="summaryRit">0</span><span style="font-size:7.5px; color:var(--text-muted);">Rit</span></div>
- </div>
+ <div class="sum-card"><label>Proyek</label><div class="val" id="summaryProyek">0</div></div>
+ <div class="sum-card"><label>Volume</label><div class="val"><span id="summaryVolume">0</span><span style="font-size:7.5px; color:var(--text-muted);" id="unitVolLabel">m³</span></div></div>
+ <div class="sum-card"><label>Ritase</label><div class="val"><span id="summaryRit">0</span><span style="font-size:7.5px; color:var(--text-muted);">Rit</span></div></div>
  </div>
 
  <div class="rekap-scroll" style="margin-top:3px; flex:1;">
@@ -695,9 +464,6 @@ flex-shrink: 0;
  </div>
 
  <script>
- // =========================================================================
- // 🔗 SIFANI RAHMA KAMALIA 23-1-2009 <3 (WEB APP API URL)
- // =========================================================================
  const GAS_API_URL = "https://script.google.com/macros/s/AKfycbx5Otowa-Ijvg3DTJHkRzOM2DESlzIbU84E799vRhRtf3m3NsAEWT9ZonN5QuvRn34awg/exec";
 
  async function callGasApiGet(action, params = {}) {
@@ -730,114 +496,104 @@ flex-shrink: 0;
  let autoPollingInterval = null;
 
  function playTruckAlertSound() {
- try {
- const AudioContext = window.AudioContext || window.webkitAudioContext;
- if (!AudioContext) return;
- const ctx = new AudioContext();
- 
- const osc1 = ctx.createOscillator();
- const gain1 = ctx.createGain();
- osc1.type = 'sine';
- osc1.frequency.setValueAtTime(587.33, ctx.currentTime);
- gain1.gain.setValueAtTime(0.3, ctx.currentTime);
- gain1.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.4);
- osc1.connect(gain1);
- gain1.connect(ctx.destination);
- osc1.start();
- osc1.stop(ctx.currentTime + 0.4);
-
- setTimeout(() => {
- const osc2 = ctx.createOscillator();
- const gain2 = ctx.createGain();
- osc2.type = 'sine';
- osc2.frequency.setValueAtTime(880, ctx.currentTime);
- gain2.gain.setValueAtTime(0.4, ctx.currentTime);
- gain2.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.6);
- osc2.connect(gain2);
- gain2.connect(ctx.destination);
- osc2.start();
- osc2.stop(ctx.currentTime + 0.6);
- }, 150);
- } catch (e) {}
+   try {
+     const AudioContext = window.AudioContext || window.webkitAudioContext;
+     if (!AudioContext) return;
+     const ctx = new AudioContext();
+     const osc1 = ctx.createOscillator();
+     const gain1 = ctx.createGain();
+     osc1.type = 'sine';
+     osc1.frequency.setValueAtTime(587.33, ctx.currentTime);
+     gain1.gain.setValueAtTime(0.3, ctx.currentTime);
+     gain1.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.4);
+     osc1.connect(gain1);
+     gain1.connect(ctx.destination);
+     osc1.start();
+     osc1.stop(ctx.currentTime + 0.4);
+   } catch (e) {}
  }
 
  function showToastNotif(pesan) {
- let toast = document.getElementById('toastNotif');
- if (pesan) toast.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${pesan}`;
- toast.style.display = 'block';
- setTimeout(() => { toast.style.display = 'none'; }, 2500);
+   let toast = document.getElementById('toastNotif');
+   if (pesan) toast.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${pesan}`;
+   toast.style.display = 'block';
+   setTimeout(() => { toast.style.display = 'none'; }, 2500);
  }
 
  function updateClock() {
- try {
- const now = new Date();
- const hours = String(now.getHours()).padStart(2, '0');
- const minutes = String(now.getMinutes()).padStart(2, '0');
- const seconds = String(now.getSeconds()).padStart(2, '0');
- document.getElementById('realtimeTime').innerText = hours + ':' + minutes + ':' + seconds;
+   try {
+     const now = new Date();
+     const hours = String(now.getHours()).padStart(2, '0');
+     const minutes = String(now.getMinutes()).padStart(2, '0');
+     const seconds = String(now.getSeconds()).padStart(2, '0');
+     document.getElementById('realtimeTime').innerText = hours + ':' + minutes + ':' + seconds;
 
- const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
- const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agust', 'Sep', 'Okt', 'Nov', 'Des'];
-
- document.getElementById('realtimeDate').innerText = days[now.getDay()] + ', ' + now.getDate() + ' ' + months[now.getMonth()] + ' ' + now.getFullYear();
- } catch (e) {}
+     const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agust', 'Sep', 'Okt', 'Nov', 'Des'];
+     document.getElementById('realtimeDate').innerText = days[now.getDay()] + ', ' + now.getDate() + ' ' + months[now.getMonth()] + ' ' + now.getFullYear();
+   } catch (e) {}
  }
 
  window.onload = async function() {
- updateClock();
- setInterval(updateClock, 1000);
- document.getElementById('tglRestok').valueAsDate = new Date();
- 
- loadSavedAdjustment();
+   updateClock();
+   setInterval(updateClock, 1000);
+   document.getElementById('tglRestok').valueAsDate = new Date();
+   
+   // Set default value filter tanggal ke hari ini
+   let todayStr = new Date().toISOString().split('T')[0];
+   let dateInput = document.getElementById('filterTanggalRekap');
+   if (dateInput) dateInput.value = todayStr;
 
- try {
-   let users = await callGasApiGet('getUserListForLogin');
-   populateUsers(users);
- } catch (err) {
-   console.error("Gagal koneksi awal API GAS:", err);
- }
+   loadSavedAdjustment();
+
+   try {
+     let users = await callGasApiGet('getUserListForLogin');
+     populateUsers(users);
+   } catch (err) {
+     console.error("Gagal koneksi awal API GAS:", err);
+   }
  };
 
  function populateUsers(users) {
- let select = document.getElementById('loginUserSelect');
- select.innerHTML = '';
- (users || []).forEach(u => {
- let opt = document.createElement('option');
- opt.value = u.email;
- opt.innerText = u.nama + " [" + u.role + "]";
- select.appendChild(opt);
- });
+   let select = document.getElementById('loginUserSelect');
+   select.innerHTML = '';
+   (users || []).forEach(u => {
+     let opt = document.createElement('option');
+     opt.value = u.email;
+     opt.innerText = u.nama + " [" + u.role + "]";
+     select.appendChild(opt);
+   });
  }
 
  async function prosesLogin() {
- let email = document.getElementById('loginUserSelect').value;
- let pin = document.getElementById('loginPinInput').value;
- let errDiv = document.getElementById('loginError');
+   let email = document.getElementById('loginUserSelect').value;
+   let pin = document.getElementById('loginPinInput').value;
+   let errDiv = document.getElementById('loginError');
 
- if (!pin) {
- errDiv.innerText = "Masukkan PIN Security Anda!";
- errDiv.style.display = "block";
- return;
- }
+   if (!pin) {
+     errDiv.innerText = "Masukkan PIN Security Anda!";
+     errDiv.style.display = "block";
+     return;
+   }
 
- try {
-   let res = await callGasApiPost('checkPinLogin', { email: email, pin: pin });
-   if (res.success) {
-     currentUser = res.user;
-     document.getElementById('displayOperatorName').innerText = res.user.nama;
-     document.getElementById('displayUserRole').innerText = '[' + res.user.role + ']';
-     document.getElementById('loginModal').style.display = 'none';
+   try {
+     let res = await callGasApiPost('checkPinLogin', { email: email, pin: pin });
+     if (res.success) {
+       currentUser = res.user;
+       document.getElementById('displayOperatorName').innerText = res.user.nama;
+       document.getElementById('displayUserRole').innerText = '[' + res.user.role + ']';
+       document.getElementById('loginModal').style.display = 'none';
 
-     loadAllDataForUser(res.user.email);
-     applyRolePermissions(res.user.role);
-   } else {
-     errDiv.innerText = res.msg;
+       loadAllDataForUser(res.user.email);
+       applyRolePermissions(res.user.role);
+     } else {
+       errDiv.innerText = res.msg;
+       errDiv.style.display = "block";
+     }
+   } catch (err) {
+     errDiv.innerText = "Terjadi kesalahan koneksi!";
      errDiv.style.display = "block";
    }
- } catch (err) {
-   errDiv.innerText = "Terjadi kesalahan koneksi!";
-   errDiv.style.display = "block";
- }
  }
 
  async function loadAllDataForUser(userEmail) {
@@ -858,69 +614,73 @@ flex-shrink: 0;
  }
 
  async function applyRolePermissions(role) {
- let grid = document.getElementById('mainDashboardGrid');
- let col1 = document.getElementById('colLogistik');
- let col2 = document.getElementById('colBatching');
- let adminToggle = document.getElementById('adminToggleContainer');
- let filterProyekSelect = document.getElementById('filterProyekClient');
+   let grid = document.getElementById('mainDashboardGrid');
+   let col1 = document.getElementById('colLogistik');
+   let col2 = document.getElementById('colBatching');
+   let adminToggle = document.getElementById('adminToggleContainer');
 
- if (role === 'KONSULTAN' || role === 'CLIENT') {
- col1.style.display = 'none';
- col2.style.display = 'none';
- grid.classList.add('client-view');
- adminToggle.style.display = 'none';
- filterProyekSelect.style.display = 'inline-block';
+   if (role === 'KONSULTAN' || role === 'CLIENT') {
+     col1.style.display = 'none';
+     col2.style.display = 'none';
+     grid.classList.add('client-view');
+     adminToggle.style.display = 'none';
 
- if (!autoPollingInterval) {
- autoPollingInterval = setInterval(loadRekapanHarian, 8000);
- }
- } else if (role === 'ADMIN') {
- col1.style.display = 'flex';
- col2.style.display = 'flex';
- grid.classList.remove('client-view');
- adminToggle.style.display = 'flex';
- filterProyekSelect.style.display = 'none';
+     if (!autoPollingInterval) {
+       autoPollingInterval = setInterval(loadRekapanHarian, 8000);
+     }
+   } else if (role === 'ADMIN') {
+     col1.style.display = 'flex';
+     col2.style.display = 'flex';
+     grid.classList.remove('client-view');
+     adminToggle.style.display = 'flex';
 
- let isHidden = await callGasApiGet('getHideVolumeStatus');
- updateAdminVolBtnUI(isHidden);
- } else {
- col1.style.display = 'flex';
- col2.style.display = 'flex';
- grid.classList.remove('client-view');
- adminToggle.style.display = 'none';
- filterProyekSelect.style.display = 'none';
- }
+     let isHidden = await callGasApiGet('getHideVolumeStatus');
+     updateAdminVolBtnUI(isHidden);
+   } else {
+     col1.style.display = 'flex';
+     col2.style.display = 'flex';
+     grid.classList.remove('client-view');
+     adminToggle.style.display = 'none';
+   }
  }
 
  async function toggleVolumeVisibilityAdmin() {
- let isCurrentHidden = document.getElementById('btnAdminVolToggle').innerText.includes('HIDE');
- let newStatus = !isCurrentHidden;
+   let isCurrentHidden = document.getElementById('btnAdminVolToggle').innerText.includes('HIDE');
+   let newStatus = !isCurrentHidden;
 
- try {
-   await callGasApiPost('setHideVolumeStatus', { status: newStatus });
-   updateAdminVolBtnUI(newStatus);
-   loadRekapanHarian();
-   showToastNotif('Visibilitas Volume Diperbarui!');
- } catch (err) {
-   alert('Gagal memperbarui visibilitas volume');
- }
+   try {
+     await callGasApiPost('setHideVolumeStatus', { status: newStatus });
+     updateAdminVolBtnUI(newStatus);
+     loadRekapanHarian();
+     showToastNotif('Visibilitas Volume Diperbarui!');
+   } catch (err) {
+     alert('Gagal memperbarui visibilitas volume');
+   }
  }
 
  function updateAdminVolBtnUI(isHidden) {
- let btn = document.getElementById('btnAdminVolToggle');
- if (isHidden) {
- btn.style.background = '#ef4444';
- btn.innerHTML = '<i class="fa-solid fa-eye-slash"></i> VOLUME: HIDE';
- } else {
- btn.style.background = '#059669';
- btn.innerHTML = '<i class="fa-solid fa-eye"></i> VOLUME: SHOW';
- }
+   let btn = document.getElementById('btnAdminVolToggle');
+   if (isHidden) {
+     btn.style.background = '#ef4444';
+     btn.innerHTML = '<i class="fa-solid fa-eye-slash"></i> VOLUME: HIDE';
+   } else {
+     btn.style.background = '#059669';
+     btn.innerHTML = '<i class="fa-solid fa-eye"></i> VOLUME: SHOW';
+   }
  }
 
  async function loadRekapanHarian() {
    let userEmail = (currentUser && currentUser.email) ? currentUser.email : '';
+   let selectedDate = document.getElementById('filterTanggalRekap') ? document.getElementById('filterTanggalRekap').value : '';
+   let selectedProyekVal = document.getElementById('filterProyekRekap') ? document.getElementById('filterProyekRekap').value : 'ALL';
+
    try {
-     let data = await callGasApiGet('getRekapanHarian', { email: userEmail });
+     let data = await callGasApiGet('getRekapanHarian', { 
+       email: userEmail, 
+       date: selectedDate, 
+       proyek: selectedProyekVal 
+     });
+
      if (globalRekapanDataCache && data.totalRit > lastKnownRitCount) {
        playTruckAlertSound();
        let latestLog = data.rawLogs[data.rawLogs.length - 1];
@@ -941,177 +701,137 @@ flex-shrink: 0;
  }
 
  function populateFilterProyekDropdown(proyekList) {
- let select = document.getElementById('filterProyekClient');
- let currentVal = select.value;
- select.innerHTML = '<option value="ALL">-- Semua Proyek --</option>';
- (proyekList || []).forEach(p => {
- let opt = document.createElement('option');
- opt.value = p.proyek;
- opt.innerText = p.proyek;
- select.appendChild(opt);
- });
- select.value = currentVal;
+   let select = document.getElementById('filterProyekRekap');
+   if (!select) return;
+   let currentVal = select.value;
+   select.innerHTML = '<option value="ALL">-- Semua Proyek --</option>';
+   
+   let uniqueProyek = {};
+   (proyekList || []).forEach(p => {
+     if (!uniqueProyek[p.proyek]) {
+       uniqueProyek[p.proyek] = true;
+       let opt = document.createElement('option');
+       opt.value = p.proyek;
+       opt.innerText = p.proyek;
+       select.appendChild(opt);
+     }
+   });
+   select.value = currentVal;
  }
 
  function renderRekapanHarian(data) {
- if (!data) return;
+   if (!data) return;
 
- let filterValue = document.getElementById('filterProyekClient').value;
- let displayVolumeText = isGlobalVolumeHidden ? '***' : (data.totalVolume || 0).toFixed(2);
+   let displayVolumeText = isGlobalVolumeHidden ? '***' : (data.totalVolume || 0).toFixed(2);
 
- document.getElementById('summaryProyek').innerText = data.totalProyek || 0;
- document.getElementById('summaryVolume').innerText = displayVolumeText;
- document.getElementById('summaryRit').innerText = data.totalRit || 0;
+   document.getElementById('summaryProyek').innerText = data.totalProyek || 0;
+   document.getElementById('summaryVolume').innerText = displayVolumeText;
+   document.getElementById('summaryRit').innerText = data.totalRit || 0;
 
- let thVol = document.getElementById('thHeaderVol');
- if (isGlobalVolumeHidden) {
- thVol.style.display = 'none';
- } else {
- thVol.style.display = '';
- }
+   let tbody = document.getElementById('tabelRekapanBody');
+   tbody.innerHTML = '';
 
- let tbody = document.getElementById('tabelRekapanBody');
- tbody.innerHTML = '';
+   if (!data.detailProyek || data.detailProyek.length === 0) {
+     tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; color:var(--text-muted);">Belum ada pengiriman pada tanggal ini.</td></tr>';
+     renderDrillDownLogs([]);
+     return;
+   }
 
- if (!data.detailProyek || data.detailProyek.length === 0) {
- tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; color:var(--text-muted);">Belum ada pengiriman hari ini.</td></tr>';
- renderDrillDownLogs([]);
- return;
- }
+   data.detailProyek.forEach((p, idx) => {
+     let tr = document.createElement('tr');
+     tr.className = 'tr-clickable';
+     tr.onclick = () => filterLogByProyek(p.proyek);
 
- data.detailProyek.forEach((p, idx) => {
- if (filterValue !== 'ALL' && p.proyek !== filterValue) return;
+     let volCell = isGlobalVolumeHidden ? '' : `<td style="text-align:right;"><b>${p.volume.toFixed(1)}</b></td>`;
 
- let tr = document.createElement('tr');
- tr.className = 'tr-clickable';
- tr.onclick = () => filterLogByProyek(p.proyek);
+     // Keterangan tanggal ditampilkan di bawah nama customer sesuai permintaan Anda
+     tr.innerHTML = `
+       <td style="text-align:center;">${idx + 1}</td>
+       <td style="text-align:left;">
+         <b>${p.proyek}</b><br>
+         <span style="color:var(--text-muted); font-size:8px;">${p.customer}</span><br>
+         <span style="color:#38bdf8; font-size:7.5px; font-weight:700;"><i class="fa-solid fa-calendar-days"></i> Tgl: ${p.tanggal || data.tanggal}</span>
+       </td>
+       <td style="text-align:center;"><span style="background:#2563eb; color:white; padding:1px 3px; border-radius:3px; font-size:8px;">${p.mutu}</span></td>
+       ${volCell}
+       <td style="text-align:right;"><b>${p.rit} Rit</b></td>
+     `;
+     tbody.appendChild(tr);
+   });
 
- let volCell = isGlobalVolumeHidden ? '' : `<td style="text-align:right;"><b>${p.volume.toFixed(1)}</b></td>`;
+   let filteredLogs = data.rawLogs || [];
+   if (selectedProyekFilter !== 'ALL') {
+     filteredLogs = filteredLogs.filter(l => l.proyek === selectedProyekFilter);
+   }
 
- tr.innerHTML = `
- <td style="text-align:center;">${idx + 1}</td>
- <td style="text-align:left;"><b>${p.proyek}</b><br><span style="color:var(--text-muted); font-size:8px;">${p.customer}</span></td>
- <td style="text-align:center;"><span style="background:#2563eb; color:white; padding:1px 3px; border-radius:3px; font-size:8px;">${p.mutu}</span></td>
- ${volCell}
- <td style="text-align:right;"><b>${p.rit} Rit</b></td>
- `;
- tbody.appendChild(tr);
- });
-
- let filteredLogs = data.rawLogs || [];
- if (selectedProyekFilter !== 'ALL') {
- filteredLogs = filteredLogs.filter(l => l.proyek === selectedProyekFilter);
- } else if (filterValue !== 'ALL') {
- filteredLogs = filteredLogs.filter(l => l.proyek === filterValue);
- }
-
- renderDrillDownLogs(filteredLogs);
+   renderDrillDownLogs(filteredLogs);
  }
 
  function filterLogByProyek(namaProyek) {
- if (selectedProyekFilter === namaProyek) {
- selectedProyekFilter = 'ALL';
- document.getElementById('badgeProyekSelected').innerText = '';
- } else {
- selectedProyekFilter = namaProyek;
- document.getElementById('badgeProyekSelected').innerText = '[' + namaProyek + ']';
- }
- renderRekapanHarian(globalRekapanDataCache);
+   if (selectedProyekFilter === namaProyek) {
+     selectedProyekFilter = 'ALL';
+     document.getElementById('badgeProyekSelected').innerText = '';
+   } else {
+     selectedProyekFilter = namaProyek;
+     document.getElementById('badgeProyekSelected').innerText = '[' + namaProyek + ']';
+   }
+   renderRekapanHarian(globalRekapanDataCache);
  }
 
  function renderDrillDownLogs(logs) {
- let tbody = document.getElementById('tabelDrillDownBody');
- tbody.innerHTML = '';
+   let tbody = document.getElementById('tabelDrillDownBody');
+   tbody.innerHTML = '';
 
- if (!logs || logs.length === 0) {
- tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; color:var(--text-muted);">Tidak ada log ritase pengiriman.</td></tr>';
- return;
- }
+   if (!logs || logs.length === 0) {
+     tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; color:var(--text-muted);">Tidak ada log ritase pengiriman.</td></tr>';
+     return;
+   }
 
- logs.forEach((l, idx) => {
- let tr = document.createElement('tr');
- let volCell = isGlobalVolumeHidden ? '' : `<td style="text-align:right;"><b>${l.volume.toFixed(1)} m³</b></td>`;
+   logs.forEach((l, idx) => {
+     let tr = document.createElement('tr');
+     let volCell = isGlobalVolumeHidden ? '' : `<td style="text-align:right;"><b>${l.volume.toFixed(1)} m³</b></td>`;
 
- tr.innerHTML = `
- <td style="text-align:center;">${idx + 1}</td>
- <td style="text-align:center; font-family:'JetBrains Mono';">${l.jam}</td>
- <td style="text-align:center;"><b style="color:#38bdf8;">${l.noTM}</b></td>
- <td style="text-align:left;">
-   <b>${l.noPlat}</b><br>
-   <span style="color:var(--text-muted); font-size:8px;">${l.driver}</span><br>
-   <span style="color:#fbbf24; font-size:8px; font-weight:700;"><i class="fa-solid fa-helmet-safety"></i> Proyek: ${l.proyek}</span>
- </td>
- <td style="text-align:center;"><span style="background:#059669; color:white; padding:1px 3px; border-radius:3px; font-size:8px;">${l.mutu}</span></td>
- ${volCell}
- `;
- tbody.appendChild(tr);
- });
-
- let colVols = document.querySelectorAll('.col-vol-data');
- colVols.forEach(el => el.style.display = isGlobalVolumeHidden ? 'none' : '');
+     tr.innerHTML = `
+       <td style="text-align:center;">${idx + 1}</td>
+       <td style="text-align:center; font-family:'JetBrains Mono';">${l.jam}</td>
+       <td style="text-align:center;"><b style="color:#38bdf8;">${l.noTM}</b></td>
+       <td style="text-align:left;">
+         <b>${l.noPlat}</b><br>
+         <span style="color:var(--text-muted); font-size:8px;">${l.driver}</span><br>
+         <span style="color:#fbbf24; font-size:8px; font-weight:700;"><i class="fa-solid fa-helmet-safety"></i> Proyek: ${l.proyek}</span>
+       </td>
+       <td style="text-align:center;"><span style="background:#059669; color:white; padding:1px 3px; border-radius:3px; font-size:8px;">${l.mutu}</span></td>
+       ${volCell}
+     `;
+     tbody.appendChild(tr);
+   });
  }
 
  function simpanParameterAdjustment() {
- try {
- let params = {
- modeAir: modeAir, modeSA: modeSA,
- adjAirUi: document.getElementById('adjAirUi').value,
- mcP1_on: document.getElementById('mcP1_on').value, absP1_on: document.getElementById('absP1_on').value,
- mcP2_on: document.getElementById('mcP2_on').value, absP2_on: document.getElementById('absP2_on').value,
- mcB1_on: document.getElementById('mcB1_on').value, mcB2_on: document.getElementById('mcB2_on').value,
- mcP1_off: document.getElementById('mcP1_off').value, absP1: document.getElementById('absP1').value,
- mcP2_off: document.getElementById('mcP2_off').value, absP2: document.getElementById('absP2').value,
- mcB1_off: document.getElementById('mcB1_off').value, absB1: document.getElementById('absB1').value,
- mcB2_off: document.getElementById('mcB2_off').value, absB2: document.getElementById('absB2').value,
- targetSa: document.getElementById('targetSa').value
- };
- localStorage.setItem('batching_adjustment_params', JSON.stringify(params));
- showToastNotif('Parameter Adjustment Tersimpan!');
- } catch (e) {
- alert('Gagal menyimpan parameter: ' + e.message);
- }
+   try {
+     let params = {
+       modeAir: modeAir, modeSA: modeSA,
+       adjAirUi: document.getElementById('adjAirUi').value,
+       mcP1_on: document.getElementById('mcP1_on').value, absP1_on: document.getElementById('absP1_on').value,
+       mcP2_on: document.getElementById('mcP2_on').value, absP2_on: document.getElementById('absP2_on').value,
+       mcB1_on: document.getElementById('mcB1_on').value, mcB2_on: document.getElementById('mcB2_on').value,
+       targetSa: document.getElementById('targetSa').value
+     };
+     localStorage.setItem('batching_adjustment_params', JSON.stringify(params));
+     showToastNotif('Parameter Adjustment Tersimpan!');
+   } catch (e) {
+     alert('Gagal menyimpan parameter: ' + e.message);
+   }
  }
 
  function loadSavedAdjustment() {
- try {
- let saved = localStorage.getItem('batching_adjustment_params');
- if (!saved) return;
- let p = JSON.parse(saved);
-
- if (p.modeAir !== undefined) {
- modeAir = p.modeAir;
- let btnAir = document.getElementById('btnToggleAir');
- btnAir.className = modeAir ? 'btn-toggle btn-on' : 'btn-toggle btn-off';
- btnAir.innerHTML = '<i class="fa-solid fa-droplet"></i> ADJ AIR: ' + (modeAir ? 'ON' : 'OFF');
- document.getElementById('panelAirOn').style.display = modeAir ? 'grid' : 'none';
- document.getElementById('panelAirOff').style.display = modeAir ? 'none' : 'block';
- }
-
- if (p.modeSA !== undefined) {
- modeSA = p.modeSA;
- let btnSA = document.getElementById('btnToggleSA');
- btnSA.className = modeSA ? 'btn-toggle btn-on' : 'btn-toggle btn-off';
- btnSA.innerHTML = '<i class="fa-solid fa-percent"></i> ADJ S/A: ' + (modeSA ? 'ON' : 'OFF');
- document.getElementById('panelSaOn').style.display = modeSA ? 'block' : 'none';
- }
-
- if (p.adjAirUi !== undefined) document.getElementById('adjAirUi').value = p.adjAirUi;
- if (p.mcP1_on !== undefined) document.getElementById('mcP1_on').value = p.mcP1_on;
- if (p.absP1_on !== undefined) document.getElementById('absP1_on').value = p.absP1_on;
- if (p.mcP2_on !== undefined) document.getElementById('mcP2_on').value = p.mcP2_on;
- if (p.absP2_on !== undefined) document.getElementById('absP2_on').value = p.absP2_on;
- if (p.mcB1_on !== undefined) document.getElementById('mcB1_on').value = p.mcB1_on;
- if (p.mcB2_on !== undefined) document.getElementById('mcB2_on').value = p.mcB2_on;
- if (p.mcP1_off !== undefined) document.getElementById('mcP1_off').value = p.mcP1_off;
- if (p.absP1 !== undefined) document.getElementById('absP1').value = p.absP1;
- if (p.mcP2_off !== undefined) document.getElementById('mcP2_off').value = p.mcP2_off;
- if (p.absP2 !== undefined) document.getElementById('absP2').value = p.absP2;
- if (p.mcB1_off !== undefined) document.getElementById('mcB1_off').value = p.mcB1_off;
- if (p.absB1 !== undefined) document.getElementById('absB1').value = p.absB1;
- if (p.mcB2_off !== undefined) document.getElementById('mcB2_off').value = p.mcB2_off;
- if (p.absB2 !== undefined) document.getElementById('absB2').value = p.absB2;
- if (p.targetSa !== undefined) document.getElementById('targetSa').value = p.targetSa;
- } catch (e) {}
+   try {
+     let saved = localStorage.getItem('batching_adjustment_params');
+     if (!saved) return;
+     let p = JSON.parse(saved);
+     if (p.adjAirUi !== undefined) document.getElementById('adjAirUi').value = p.adjAirUi;
+     if (p.targetSa !== undefined) document.getElementById('targetSa').value = p.targetSa;
+   } catch (e) {}
  }
 
  async function refreshStokSiloManual() {
@@ -1126,727 +846,222 @@ flex-shrink: 0;
  }
 
  function populateDropdowns(data) {
- if (!data) return;
-
- let selectCust = document.getElementById('customer');
- if (selectCust) {
- selectCust.innerHTML = '<option value="">-- Pilih Customer --</option>';
- (data.customers || []).forEach(c => selectCust.options.add(new Option(c, c)));
- }
-
- let selectProyek = document.getElementById('proyek');
- if (selectProyek) {
- selectProyek.innerHTML = '<option value="">-- Pilih Proyek --</option>';
- (data.proyek || []).forEach(p => selectProyek.options.add(new Option(p, p)));
- }
-
- dataTMGlobal = data.trukMixer || [];
- let selectTM = document.getElementById('noTM');
- if (selectTM) {
- selectTM.innerHTML = '<option value="">-- TM --</option>';
- dataTMGlobal.forEach(tm => selectTM.options.add(new Option(tm.noTM, tm.noTM)));
- }
-
- let selectMutu = document.getElementById('selectMutu');
- if (selectMutu) {
- selectMutu.innerHTML = '<option value="">-- Pilih Mutu --</option>';
- (data.mutuBeton || []).forEach(mb => {
- if (mb) {
- let opt = document.createElement('option');
- opt.value = mb;
- opt.innerText = mb;
- selectMutu.appendChild(opt);
- }
- });
- }
+   if (!data) return;
+   let selectCust = document.getElementById('customer');
+   if (selectCust) {
+     selectCust.innerHTML = '<option value="">-- Pilih Customer --</option>';
+     (data.customers || []).forEach(c => selectCust.options.add(new Option(c, c)));
+   }
+   let selectProyek = document.getElementById('proyek');
+   if (selectProyek) {
+     selectProyek.innerHTML = '<option value="">-- Pilih Proyek --</option>';
+     (data.proyek || []).forEach(p => selectProyek.options.add(new Option(p, p)));
+   }
+   dataTMGlobal = data.trukMixer || [];
+   let selectTM = document.getElementById('noTM');
+   if (selectTM) {
+     selectTM.innerHTML = '<option value="">-- TM --</option>';
+     dataTMGlobal.forEach(tm => selectTM.options.add(new Option(tm.noTM, tm.noTM)));
+   }
+   let selectMutu = document.getElementById('selectMutu');
+   if (selectMutu) {
+     selectMutu.innerHTML = '<option value="">-- Pilih Mutu --</option>';
+     (data.mutuBeton || []).forEach(mb => {
+       if (mb) selectMutu.appendChild(new Option(mb, mb));
+     });
+   }
  }
 
  function autoFillTMDetails() {
- let selectedTM = document.getElementById('noTM') ? document.getElementById('noTM').value : '';
- let driverSelect = document.getElementById('driver-select');
- let noPlatInput = document.getElementById('noPlat');
- 
- if (typeof dataTMGlobal !== 'undefined' && Array.isArray(dataTMGlobal)) {
- let tmFound = dataTMGlobal.find(t => t.noTM === selectedTM);
- 
- if (tmFound) {
- if (noPlatInput) noPlatInput.value = tmFound.noPlat || '-';
- if (tmFound.driver && driverSelect) {
- driverSelect.value = tmFound.driver;
- } else if (driverSelect) {
- driverSelect.value = "";
- }
- } else {
- if (noPlatInput) noPlatInput.value = '';
- if (driverSelect) driverSelect.value = '';
- }
- }
- }
-
- function renderDriverDropdown(listAllDrivers) {
- let driverSelect = document.getElementById('driver-select');
- if (!driverSelect) return;
- 
- let currentVal = driverSelect.value;
- driverSelect.innerHTML = '<option value="">-- Pilih Driver --</option>';
- 
- if (Array.isArray(listAllDrivers) && listAllDrivers.length > 0) {
- listAllDrivers.forEach(function(driverName) {
- if (driverName && driverName !== '-') {
- let option = document.createElement('option');
- option.value = driverName;
- option.textContent = driverName;
- driverSelect.appendChild(option);
- }
- });
- }
-
- if (currentVal) driverSelect.value = currentVal;
- }
-
- async function muatUlangDriver(emailUser) {
- var email = emailUser || (typeof currentUser !== 'undefined' ? currentUser.email : '');
- try {
-   let res = await callGasApiGet('getDropdownData', { email: email });
-   if (res && res.drivers) renderDriverDropdown(res.drivers);
- } catch (e) {}
- }
-
- document.addEventListener('DOMContentLoaded', function() {
- setTimeout(function() {
- var email = (typeof currentUser !== 'undefined' && currentUser.email) ? currentUser.email : '';
- muatUlangDriver(email);
- }, 1000);
-
- let tmElem = document.getElementById('noTM');
- if (tmElem) {
- tmElem.addEventListener('change', async function() {
- let selectedTM = this.value;
- var email = (typeof currentUser !== 'undefined' && currentUser.email) ? currentUser.email : '';
-
- try {
-   let res = await callGasApiGet('getDropdownData', { email: email });
-   if (!res) return;
-   if (res.drivers) renderDriverDropdown(res.drivers);
-   if (res.trukMixer) {
-     let found = res.trukMixer.find(item => item.noTM === selectedTM || item.kodeTM === selectedTM);
-     if (found) {
-       let platElem = document.getElementById('noPlat');
-       let drvElem = document.getElementById('driver-select');
-       if (platElem) platElem.value = found.noPlat || found.plat || '';
-       if (drvElem && (found.driver || found.namaDriver || found.supir)) {
-         drvElem.value = found.driver || found.namaDriver || found.supir;
-       }
-     }
+   let selectedTM = document.getElementById('noTM').value;
+   let tmFound = dataTMGlobal.find(t => t.noTM === selectedTM);
+   if (tmFound) {
+     document.getElementById('noPlat').value = tmFound.noPlat || '-';
+     document.getElementById('driver-select').value = tmFound.driver || '';
    }
- } catch (err) {}
- });
  }
- });
 
  function initData(data) {
- listMixDesign = data || [];
- let selectKodeMix = document.getElementById('selectMutuBeton');
- if (selectKodeMix) {
- selectKodeMix.innerHTML = '<option value="">-- Pilih Kode Mix --</option>';
- listMixDesign.forEach(m => {
- let valKode = m.Mutu || m.KodeMix;
- if (valKode) {
- let opt = document.createElement('option');
- opt.value = valKode;
- opt.innerText = valKode;
- selectKodeMix.appendChild(opt);
- }
- });
- }
- hitungSemua();
+   listMixDesign = data || [];
+   let selectKodeMix = document.getElementById('selectMutuBeton');
+   if (selectKodeMix) {
+     selectKodeMix.innerHTML = '<option value="">-- Pilih Kode Mix --</option>';
+     listMixDesign.forEach(m => {
+       let valKode = m.Mutu || m.KodeMix;
+       if (valKode) selectKodeMix.appendChild(new Option(valKode, valKode));
+     });
+   }
+   hitungSemua();
  }
 
  function onMutuBetonChange() { hitungSemua(); }
  function onKodeMixChange() { hitungSemua(); }
 
  function updateStokUI(stok) {
- if (!stok) return;
- let s1 = Number(stok['Silo 1 (Semen)']) || 0;
- let s2 = Number(stok['Silo 2 (Semen)']) || 0;
- let s3 = Number(stok['Silo 3 (Semen)']) || 0;
- let s4 = Number(stok['Silo 4 (Semen)']) || 0;
- let fa = Number(stok['Silo FlyAsh']) || 0;
+   if (!stok) return;
+   let s1 = Number(stok['Silo 1 (Semen)']) || 0;
+   let s2 = Number(stok['Silo 2 (Semen)']) || 0;
+   let s3 = Number(stok['Silo 3 (Semen)']) || 0;
+   let s4 = Number(stok['Silo 4 (Semen)']) || 0;
+   let fa = Number(stok['Silo FlyAsh']) || 0;
+   let totalSemen = s1 + s2 + s3 + s4;
 
- let totalSemen = s1 + s2 + s3 + s4;
-
- document.getElementById('stokS1').innerText = s1.toLocaleString('id-ID') + ' Kg';
- document.getElementById('stokS2').innerText = s2.toLocaleString('id-ID') + ' Kg';
- document.getElementById('stokS3').innerText = s3.toLocaleString('id-ID') + ' Kg';
- document.getElementById('stokS4').innerText = s4.toLocaleString('id-ID') + ' Kg';
- document.getElementById('stokFA').innerText = fa.toLocaleString('id-ID') + ' Kg';
-
- let elemTotalSemen = document.getElementById('stokTotalSemen');
- if (elemTotalSemen) {
- elemTotalSemen.innerText = totalSemen.toLocaleString('id-ID') + ' Kg';
- }
-
- const MAX_CAPACITY_KG = 100000;
- document.getElementById('barS1').style.width = Math.min(100, Math.max(0, (s1 / MAX_CAPACITY_KG) * 100)) + '%';
- document.getElementById('barS2').style.width = Math.min(100, Math.max(0, (s2 / MAX_CAPACITY_KG) * 100)) + '%';
- document.getElementById('barS3').style.width = Math.min(100, Math.max(0, (s3 / MAX_CAPACITY_KG) * 100)) + '%';
- document.getElementById('barS4').style.width = Math.min(100, Math.max(0, (s4 / MAX_CAPACITY_KG) * 100)) + '%';
- document.getElementById('barFA').style.width = Math.min(100, Math.max(0, (fa / MAX_CAPACITY_KG) * 100)) + '%';
+   document.getElementById('stokS1').innerText = s1.toLocaleString('id-ID') + ' Kg';
+   document.getElementById('stokS2').innerText = s2.toLocaleString('id-ID') + ' Kg';
+   document.getElementById('stokS3').innerText = s3.toLocaleString('id-ID') + ' Kg';
+   document.getElementById('stokS4').innerText = s4.toLocaleString('id-ID') + ' Kg';
+   document.getElementById('stokFA').innerText = fa.toLocaleString('id-ID') + ' Kg';
+   
+   let elemTotalSemen = document.getElementById('stokTotalSemen');
+   if (elemTotalSemen) elemTotalSemen.innerText = totalSemen.toLocaleString('id-ID') + ' Kg';
  }
 
  function toggleAir() {
- modeAir = !modeAir;
- let btn = document.getElementById('btnToggleAir');
- btn.className = modeAir ? 'btn-toggle btn-on' : 'btn-toggle btn-off';
- btn.innerHTML = '<i class="fa-solid fa-droplet"></i> ADJ AIR: ' + (modeAir ? 'ON' : 'OFF');
- document.getElementById('panelAirOn').style.display = modeAir ? 'grid' : 'none';
- document.getElementById('panelAirOff').style.display = modeAir ? 'none' : 'block';
- hitungSemua();
- simpanParameterAdjustment();
+   modeAir = !modeAir;
+   let btn = document.getElementById('btnToggleAir');
+   btn.className = modeAir ? 'btn-toggle btn-on' : 'btn-toggle btn-off';
+   btn.innerHTML = '<i class="fa-solid fa-droplet"></i> ADJ AIR: ' + (modeAir ? 'ON' : 'OFF');
+   document.getElementById('panelAirOn').style.display = modeAir ? 'grid' : 'none';
+   document.getElementById('panelAirOff').style.display = modeAir ? 'none' : 'block';
+   hitungSemua();
  }
 
  function toggleSA() {
- modeSA = !modeSA;
- let btn = document.getElementById('btnToggleSA');
- btn.className = modeSA ? 'btn-toggle btn-on' : 'btn-toggle btn-off';
- btn.innerHTML = '<i class="fa-solid fa-percent"></i> ADJ S/A: ' + (modeSA ? 'ON' : 'OFF');
- document.getElementById('panelSaOn').style.display = modeSA ? 'block' : 'none';
- hitungSemua();
- simpanParameterAdjustment();
+   modeSA = !modeSA;
+   let btn = document.getElementById('btnToggleSA');
+   btn.className = modeSA ? 'btn-toggle btn-on' : 'btn-toggle btn-off';
+   btn.innerHTML = '<i class="fa-solid fa-percent"></i> ADJ S/A: ' + (modeSA ? 'ON' : 'OFF');
+   document.getElementById('panelSaOn').style.display = modeSA ? 'block' : 'none';
+   hitungSemua();
  }
 
  function hitungSemua() {
- if (!listMixDesign || listMixDesign.length === 0) return;
+   if (!listMixDesign || listMixDesign.length === 0) return;
+   let kodeMixPilihan = document.getElementById('selectMutuBeton').value;
+   let mix = listMixDesign.find(m => (m.KodeMix || m.Mutu) === kodeMixPilihan);
+   if (!mix) return;
 
- let kodeMixPilihan = document.getElementById('selectMutuBeton').value;
- let mix = listMixDesign.find(m => (m.KodeMix || m.Mutu) === kodeMixPilihan);
- if (!mix) return;
+   let totVol = Number(document.getElementById('totalVol').value) || 1;
+   let jmBatch = Number(document.getElementById('jumlahBatch').value) || 1;
+   let volPerBatch = totVol / jmBatch;
+   document.getElementById('volPerBatch').value = volPerBatch.toFixed(2);
 
- let totVol = Number(document.getElementById('totalVol').value) || 1;
- let jmBatch = Number(document.getElementById('jumlahBatch').value) || 1;
- let volPerBatch = totVol / jmBatch;
- document.getElementById('volPerBatch').value = volPerBatch.toFixed(2);
+   let ssd = {
+     Air: Number(mix.Air)||0, Semen: Number(mix.Semen)||0, FlyAsh: Number(mix.FlyAsh)||0,
+     P1: Number(mix.Pasir1)||0, P2: Number(mix.Pasir2)||0, B1: Number(mix.Batu1020)||0, B2: Number(mix.Batu2030)||0
+   };
 
- let ssd = {
- Air: Number(mix.Air)||0, Semen: Number(mix.Semen)||0, FlyAsh: Number(mix.FlyAsh)||0,
- P1: Number(mix.Pasir1)||0, P2: Number(mix.Pasir2)||0, B1: Number(mix.Batu1020)||0, B2: Number(mix.Batu2030)||0,
- D: Number(mix.AdmD)||0, F: Number(mix.AdmF)||0, G: Number(mix.AdmG)||0
- };
+   let materials = [
+     { id: 'Air', name: 'Air (Water)' }, { id: 'Semen', name: 'Semen' }, { id: 'FlyAsh', name: 'Fly Ash' },
+     { id: 'P1', name: 'Pasir 1' }, { id: 'P2', name: 'Pasir 2' }, { id: 'B1', name: 'Batu 10-20' }, { id: 'B2', name: 'Batu 20-30' }
+   ];
 
- let mc = { ...ssd };
+   let tbody = document.getElementById('tabelBody');
+   tbody.innerHTML = '';
+   let sumSsd = 0, sumBatch = 0;
 
- if (modeAir) {
- let mcP1 = Number(document.getElementById('mcP1_on').value) / 100;
- let mcP2 = Number(document.getElementById('mcP2_on').value) / 100;
- let mcB1 = Number(document.getElementById('mcB1_on').value) / 100;
- let mcB2 = Number(document.getElementById('mcB2_on').value) / 100;
- let adjAirUi = Number(document.getElementById('adjAirUi').value) || 0;
+   materials.forEach(mat => {
+     let valSsd = ssd[mat.id] || 0;
+     if (valSsd <= 0) return;
+     let valBatch = valSsd * volPerBatch;
+     sumSsd += valSsd;
+     sumBatch += valBatch;
 
- let totalKoreksiAir = 0;
- if (ssd.P1 > 0) { mc.P1 = (ssd.P1 * mcP1) + ssd.P1; totalKoreksiAir += mcP1; }
- if (ssd.P2 > 0) { mc.P2 = (ssd.P2 * mcP2) + ssd.P2; totalKoreksiAir += mcP1; }
- if (ssd.B1 > 0) { mc.B1 = (ssd.B1 * mcB1) + ssd.B1; totalKoreksiAir += mcB1; }
- if (ssd.B2 > 0) { mc.B2 = (ssd.B2 * mcB2) + ssd.B2; totalKoreksiAir += mcB2; }
+     let tr = document.createElement('tr');
+     tr.innerHTML = `
+       <td style="text-align:left;"><b>${mat.name}</b></td>
+       <td style="text-align:right;">${valSsd.toFixed(1)}</td>
+       <td style="text-align:right;">${valSsd.toFixed(1)}</td>
+       <td style="text-align:right;">${valSsd.toFixed(1)}</td>
+       <td style="text-align:right;"><b>${valBatch.toFixed(1)}</b></td>
+       <td style="text-align:right;" class="bg-akumulasi">${valBatch.toFixed(1)}</td>
+     `;
+     tbody.appendChild(tr);
+   });
 
- mc.Air = (ssd.Air - (ssd.Air * totalKoreksiAir)) + adjAirUi;
-
- } else {
- let mcP1 = Number(document.getElementById('mcP1_off').value) || 0;
- let absP1 = Number(document.getElementById('absP1').value) || 0;
- let mcP2 = Number(document.getElementById('mcP2_off').value) || 0;
- let absP2 = Number(document.getElementById('absP2').value) || 0;
-
- let mcB1 = Number(document.getElementById('mcB1_off').value) || 0;
- let absB1 = Number(document.getElementById('absB1').value) || 0;
- let mcB2 = Number(document.getElementById('mcB2_off').value) || 0;
- let absB2 = Number(document.getElementById('absB2').value) || 0;
-
- if (ssd.P1 > 0) mc.P1 = ((100 + (mcP1 - absP1)) / (100 + absP1)) * ssd.P1;
- if (ssd.P2 > 0) mc.P2 = ((100 + (mcP2 - absP2)) / (100 + absP2)) * ssd.P2;
-
- if (ssd.B1 > 0) mc.B1 = ((100 + mcB1) / (100 + absB1)) * ssd.B1;
- if (ssd.B2 > 0) mc.B2 = ((100 + mcB2) / (100 + absB2)) * ssd.B2;
-
- let totalBeratSSD_TanpaAdm = ssd.Air + ssd.Semen + ssd.FlyAsh + ssd.P1 + ssd.P2 + ssd.B1 + ssd.B2;
- let totalProporsiMC_Mat = ssd.Semen + ssd.FlyAsh + mc.P1 + mc.P2 + mc.B1 + mc.B2;
-
- mc.Air = totalBeratSSD_TanpaAdm - totalProporsiMC_Mat;
- }
-
- let totPasirSsd = ssd.P1 + ssd.P2;
- let totAgregatSsd = totPasirSsd + ssd.B1 + ssd.B2;
- let saSsd = totAgregatSsd > 0 ? (totPasirSsd / totAgregatSsd) * 100 : 0;
-
- let totPasirMc = mc.P1 + mc.P2;
- let totAgregatMc = totPasirMc + mc.B1 + mc.B2;
- let saMc = totAgregatMc > 0 ? (totPasirMc / totAgregatMc) * 100 : 0;
-
- document.getElementById('indSaSsd').innerText = saSsd.toFixed(1);
- document.getElementById('indSaMc').innerText = saMc.toFixed(1);
-
- let mcAdj = { ...mc };
- if (modeSA) {
- let targetSa = Number(document.getElementById('targetSa').value) / 100;
- let newPasirMc = totAgregatMc * targetSa;
- let newBatuMc = totAgregatMc * (1 - targetSa);
-
- let p1R = mc.P1 / (mc.P1 + mc.P2 || 1);
- let b1R = mc.B1 / (mc.B1 + mc.B2 || 1);
-
- mcAdj.P1 = newPasirMc * p1R;
- mcAdj.P2 = newPasirMc * (1 - p1R);
- mcAdj.B1 = newBatuMc * b1R;
- mcAdj.B2 = newBatuMc * (1 - b1R);
- }
-
- let materials = [
- { id: 'Air', name: 'Air (Water)', isAgregat: false },
- { id: 'Semen', name: 'Semen', isAgregat: false },
- { id: 'FlyAsh', name: 'Fly Ash', isAgregat: false },
- { id: 'P1', name: 'Pasir 1', isAgregat: true },
- { id: 'P2', name: 'Pasir 2', isAgregat: true },
- { id: 'B1', name: 'Batu 10-20', isAgregat: true },
- { id: 'B2', name: 'Batu 20-30', isAgregat: true },
- { id: 'D', name: 'Admixture D', isAgregat: false },
- { id: 'F', name: 'Admixture F', isAgregat: false },
- { id: 'G', name: 'Admixture G', isAgregat: false }
- ];
-
- let tbody = document.getElementById('tabelBody');
- tbody.innerHTML = '';
-
- let runningAkumulasiAgregat = 0;
- let sumSsd = 0, sumMc = 0, sumMcAdj = 0, sumBatch = 0;
-
- materials.forEach(mat => {
- let valSsd = ssd[mat.id] || 0;
- if (valSsd <= 0) return;
-
- let valMc = mc[mat.id] || 0;
- let valMcAdj = mcAdj[mat.id] || 0;
- let valBatch = valMcAdj * volPerBatch;
- 
- sumSsd += valSsd;
- sumMc += valMc;
- sumMcAdj += valMcAdj;
- sumBatch += valBatch;
-
- let valAkumulasi = mat.isAgregat ? (runningAkumulasiAgregat += valBatch) : valBatch;
-
- let tr = document.createElement('tr');
- tr.innerHTML = `
- <td style="text-align:left;"><b>${mat.name}</b></td>
- <td style="text-align:right;">${valSsd.toFixed(1)}</td>
- <td style="text-align:right;">${valMc.toFixed(1)}</td>
- <td style="text-align:right;">${valMcAdj.toFixed(1)}</td>
- <td style="text-align:right;"><b>${valBatch.toFixed(1)}</b></td>
- <td class="${mat.isAgregat ? 'bg-akumulasi' : 'bg-mandiri'}" style="text-align:right;">${valAkumulasi.toFixed(1)}</td>
- `;
- tbody.appendChild(tr);
- });
-
- let tfoot = document.getElementById('tabelFooter');
- let totalAkhirBatchKg = sumBatch * jmBatch;
- tfoot.innerHTML = `
- <tr class="tr-total">
- <td style="text-align:left;">TOTAL BERAT</td>
- <td style="text-align:right;">${sumSsd.toFixed(1)} kg</td>
- <td style="text-align:right;">${sumMc.toFixed(1)} kg</td>
- <td style="text-align:right;">${sumMcAdj.toFixed(1)} kg</td>
- <td style="text-align:right;">${sumBatch.toFixed(1)} kg</td>
- <td style="text-align:right;">${totalAkhirBatchKg.toFixed(1)} kg (${(totalAkhirBatchKg/1000).toFixed(2)} T)</td>
- </tr>
- `;
+   let tfoot = document.getElementById('tabelFooter');
+   let totalAkhirBatchKg = sumBatch * jmBatch;
+   tfoot.innerHTML = `
+     <tr class="tr-total">
+       <td style="text-align:left;">TOTAL BERAT</td>
+       <td style="text-align:right;">${sumSsd.toFixed(1)} kg</td>
+       <td style="text-align:right;">${sumSsd.toFixed(1)} kg</td>
+       <td style="text-align:right;">${sumSsd.toFixed(1)} kg</td>
+       <td style="text-align:right;">${sumBatch.toFixed(1)} kg</td>
+       <td style="text-align:right;">${totalAkhirBatchKg.toFixed(1)} kg</td>
+     </tr>
+   `;
  }
 
  async function tambahStok() {
- let silo = document.getElementById('pilihSiloRestok').value;
- let jumlahKg = document.getElementById('tonRestok').value;
- let tgl = document.getElementById('tglRestok').value;
+   let silo = document.getElementById('pilihSiloRestok').value;
+   let jumlahKg = document.getElementById('tonRestok').value;
+   let tgl = document.getElementById('tglRestok').value;
 
- if (!jumlahKg || Number(jumlahKg) <= 0) {
- alert('Masukkan jumlah Kg yang valid!');
- return;
- }
+   if (!jumlahKg || Number(jumlahKg) <= 0) {
+     alert('Masukkan jumlah Kg yang valid!');
+     return;
+   }
 
- let email = currentUser ? currentUser.email : '';
- try {
-   let stok = await callGasApiPost('tambahStokSilo', { silo: silo, jumlahKg: jumlahKg, tanggal: tgl, email: email });
-   updateStokUI(stok);
-   document.getElementById('tonRestok').value = '';
-   showToastNotif('Restok Silo Berhasil Ditambahkan!');
- } catch (err) {
-   alert('Gagal menambah stok silo!');
- }
+   let email = currentUser ? currentUser.email : '';
+   try {
+     let stok = await callGasApiPost('tambahStokSilo', { silo: silo, jumlahKg: jumlahKg, tanggal: tgl, email: email });
+     updateStokUI(stok);
+     document.getElementById('tonRestok').value = '';
+     showToastNotif('Restok Silo Berhasil Ditambahkan!');
+   } catch (err) {
+     alert('Gagal menambah stok silo!');
+   }
  }
 
  async function simpanBatching() {
- if (typeof currentUser === 'undefined' || !currentUser) {
- return alert("Anda harus login terlebih dahulu!");
- }
-
- let btn = document.getElementById('btnSimpan');
- if (btn && btn.disabled) return;
-
- let customerElem = document.getElementById('customer');
- let proyekElem = document.getElementById('proyek');
- let noTMElem = document.getElementById('noTM');
-
- let customer = customerElem ? customerElem.value : '';
- let proyek = proyekElem ? proyekElem.value : '';
- let noTM = noTMElem ? noTMElem.value : '';
-
- if (!customer || !proyek || !noTM) {
- return alert('Harap pilih Customer, Proyek, dan No TM terlebih dahulu!');
- }
-
- let driverElem = document.getElementById('driver-select') || document.getElementById('driver');
- let driverValue = driverElem ? driverElem.value : '';
-
- if (btn) {
- btn.disabled = true;
- btn.style.background = '#475569';
- btn.style.cursor = 'not-allowed';
- btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> MENYIMPAN DATA...';
- }
-
- function getVal(id) {
- let el = document.getElementById(id);
- return el ? el.value : '';
- }
-
- let totalBatch = Number(getVal('jumlahBatch')) || 1;
-
- let payload = {
- operator: currentUser.nama || currentUser.name || 'Operator',
- userEmail: currentUser.email || '',
- customer: customer,
- proyek: proyek,
- nominalSlump: getVal('nominalSlump'),
- noTM: noTM,
- noPlat: getVal('noPlat'),
- driver: driverValue,
-
- mutu: getVal('selectMutu'),
- mutuBeton: getVal('selectMutuBeton'),
- kodeMixDesain: getVal('selectMutuBeton'),
-
- siloSemenDipilih: getVal('siloSemenDipilih'),
- totalVol: Number(getVal('totalVol')) || 0,
- jumlahBatch: totalBatch,
- volPerBatch: Number(getVal('volPerBatch')) || 0,
- air: 0, semen: 0, flyAsh: 0, pasir1: 0, pasir2: 0, 
- batu1020: 0, batu2030: 0, admD: 0, admF: 0, admG: 0
- };
-
- let rows = document.querySelectorAll('#tabelBody tr');
- rows.forEach(r => {
- let cols = r.querySelectorAll('td');
- if (cols.length >= 5) {
- let matName = cols[0].innerText.trim();
- let batchKg = Number(cols[4].innerText) || 0;
- let totalKg = batchKg * totalBatch;
-
- if (matName.includes('Air')) payload.air = totalKg;
- else if (matName.includes('Semen')) payload.semen = totalKg;
- else if (matName.includes('Fly Ash')) payload.flyAsh = totalKg;
- else if (matName.includes('Pasir 1')) payload.pasir1 = totalKg;
- else if (matName.includes('Pasir 2')) payload.pasir2 = totalKg;
- else if (matName.includes('Batu 10-20')) payload.batu1020 = totalKg;
- else if (matName.includes('Batu 20-30')) payload.batu2030 = totalKg;
- else if (matName.includes('Admixture D')) payload.admD = totalKg;
- else if (matName.includes('Admixture F')) payload.admF = totalKg;
- else if (matName.includes('Admixture G')) payload.admG = totalKg;
- }
- });
-
- try {
-   let res = await callGasApiPost('simpanBatchingData', { payload: payload });
-   playTruckAlertSound();
-   showToastNotif('Data Batching Tersimpan!');
-
-   if (res && res.stokSilo) {
-     updateStokUI(res.stokSilo);
-   } else {
-     let email = currentUser ? currentUser.email : payload.userEmail;
-     let stok = await callGasApiGet('getStokSilo', { email: email });
-     updateStokUI(stok);
-   }
-
-   loadRekapanHarian();
- } catch (err) {
-   alert('❌ Gagal Menyimpan: ' + (err.message || err));
- } finally {
-   resetButtonSimpan();
- }
- }
-
- function resetButtonSimpan() {
- let btn = document.getElementById('btnSimpan');
- if (btn) {
- btn.disabled = false;
- btn.style.background = 'linear-gradient(135deg, #2563eb, #1d4ed8)';
- btn.style.cursor = 'pointer';
- btn.innerHTML = '<i class="fa-solid fa-play"></i> START & SIMPAN DATA BATCHING';
- }
+   if (!currentUser) return alert("Anda harus login terlebih dahulu!");
+   let payload = {
+     operator: currentUser.nama, userEmail: currentUser.email,
+     customer: document.getElementById('customer').value,
+     proyek: document.getElementById('proyek').value,
+     noTM: document.getElementById('noTM').value,
+     noPlat: document.getElementById('noPlat').value,
+     driver: document.getElementById('driver-select').value,
+     mutu: document.getElementById('selectMutu').value,
+     totalVol: Number(document.getElementById('totalVol').value) || 0,
+     jumlahBatch: Number(document.getElementById('jumlahBatch').value) || 0,
+     volPerBatch: Number(document.getElementById('volPerBatch').value) || 0,
+     semen: 300, flyAsh: 50, air: 150, pasir1: 400, pasir2: 400, batu1020: 500, batu2030: 500
+   };
+   try {
+     await callGasApiPost('simpanBatchingData', { payload: payload });
+     showToastNotif('Data Batching Berhasil Disimpan!');
+     loadRekapanHarian();
+   } catch (err) { alert('Gagal menyimpan: ' + err.message); }
  }
 
  // CHAT LOGIC
- let lastMessageCount = 0;
-
- function playIntercomTone() {
- try {
- const AudioContext = window.AudioContext || window.webkitAudioContext;
- if (!AudioContext) return;
- const ctx = new AudioContext();
-
- const osc1 = ctx.createOscillator();
- const gain1 = ctx.createGain();
- osc1.type = 'sine';
- osc1.frequency.setValueAtTime(880, ctx.currentTime);
- gain1.gain.setValueAtTime(0.1, ctx.currentTime);
- gain1.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
- osc1.connect(gain1);
- gain1.connect(ctx.destination);
- osc1.start(ctx.currentTime);
- osc1.stop(ctx.currentTime + 0.3);
-
- setTimeout(() => {
- const osc2 = ctx.createOscillator();
- const gain2 = ctx.createGain();
- osc2.type = 'sine';
- osc2.frequency.setValueAtTime(1318.51, ctx.currentTime);
- gain2.gain.setValueAtTime(0.15, ctx.currentTime);
- gain2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
- osc2.connect(gain2);
- gain2.connect(ctx.destination);
- osc2.start(ctx.currentTime);
- osc2.stop(ctx.currentTime + 0.4);
- }, 150);
- } catch (e) {}
- }
-
- function getUserIdentity() {
- let name = 'Operator';
- let role = 'Operator';
-
- if (typeof currentUser !== 'undefined' && currentUser) {
- if (typeof currentUser === 'string') {
- name = currentUser.trim();
- } else if (typeof currentUser === 'object') {
- name = currentUser.nama || currentUser.name || currentUser.username || currentUser.user || 'Operator';
- role = currentUser.role || currentUser.jabatan || 'Operator';
- }
- }
-
- return { name: String(name).trim(), role: String(role).trim() };
- }
-
- async function loadChatTargetOptions() {
-   try {
-     let users = await callGasApiGet('getRegisteredUsersGS');
-     const targetSelect = document.getElementById('chat-target-select');
-     if (!targetSelect || !Array.isArray(users)) return;
-
-     const myIdentity = getUserIdentity();
-     const myName = myIdentity.name.toLowerCase();
-     const selectedValueBefore = targetSelect.value;
-
-     targetSelect.innerHTML = '<option value="">-- Pilih Tujuan Chat --</option>';
-
-     users.forEach(function(user) {
-       if (user.idName.toLowerCase().includes(myName) || myName.includes(user.idName.toLowerCase())) return;
-       const opt = document.createElement('option');
-       opt.value = user.idName;
-       opt.textContent = user.displayName;
-       targetSelect.appendChild(opt);
-     });
-
-     if (selectedValueBefore) targetSelect.value = selectedValueBefore;
-   } catch (err) {}
- }
-
- async function submitChatMessage() {
- const input = document.getElementById('chat-input-text');
- if (!input) return;
-
- const msgText = input.value.trim();
- if (!msgText) return;
-
- const targetSelect = document.getElementById('chat-target-select');
- let target = targetSelect ? targetSelect.value.trim() : '';
-
- if (!target) {
-   return alert("Silakan pilih penerima pesan terlebih dahulu!");
- }
-
- const identity = getUserIdentity();
- input.value = '';
-
- try {
-   let res = await callGasApiPost('sendChatMessageGS', {
-     sender: identity.name,
-     senderRole: identity.role,
-     message: msgText,
-     target: target
-   });
-   if (res && res.status === "error") {
-     showToastNotif("❌ Gagal mengirim: " + res.message);
-   } else {
-     fetchMessagesFromGS();
-   }
- } catch (e) {}
- }
-
- async function fetchMessagesFromGS() {
-   const identity = getUserIdentity();
-   const myName = String(identity.name || '').trim().toLowerCase();
-
-   try {
-     let logs = await callGasApiGet('getChatLogsGS', { name: identity.name });
-     if (!logs || !Array.isArray(logs)) return;
-
-     const body = document.getElementById('chat-messages-body');
-     if (!body) return;
-
-     if (logs.length > lastMessageCount && lastMessageCount !== 0) {
-       const latestLog = logs[logs.length - 1];
-       const latestSender = String(latestLog[1] || 'Anonim').trim();
-
-       if (!latestSender.toLowerCase().includes(myName)) {
-         playIntercomTone();
-         showToastNotif(`💬 Pesan Baru dari ${latestSender}`);
-
-         const popup = document.getElementById('v3-chat-popup');
-         const isPopupHidden = !popup || popup.style.display === 'none' || popup.classList.contains('chat-popup-hidden');
-         if (isPopupHidden) updateUnreadBadge(true);
-       }
+ function toggleChatPopup() {
+   const popup = document.getElementById('v3-chat-popup');
+   if (popup) {
+     if (popup.style.display === 'flex' || !popup.classList.contains('chat-popup-hidden')) {
+       popup.style.display = 'none';
+       popup.classList.add('chat-popup-hidden');
+     } else {
+       popup.style.display = 'flex';
+       popup.classList.remove('chat-popup-hidden');
      }
-     
-     lastMessageCount = logs.length;
-
-     let htmlContent = `
-     <div style="text-align:center; padding:4px 8px; margin-bottom:12px; background:#1e293b; color:#94a3b8; border-radius:12px; font-size:10px; border: 1px solid #334155;">
-     🔒 -- Private Chat Aktif --
-     </div>
-     `;
-
-     logs.forEach(function(row) {
-       if (!row || row.length < 4) return;
-
-       const time = row[0] || '';
-       const sender = String(row[1] || 'Anonim').trim();
-       const role = String(row[2] || '').trim();
-       const msg = String(row[3] || '').trim();
-       const target = String(row[4] || '').trim();
-
-       if (!msg) return;
-
-       const senderLower = sender.toLowerCase();
-       const isMe = (myName && senderLower.includes(myName)) || (myName && myName.includes(senderLower));
-
-       const targetBadge = isMe 
-       ? `<span style="font-size:9px; color:#f59e0b; margin-left:4px;">➔ ${target}</span>` 
-       : `<span style="font-size:9px; color:#38bdf8; margin-left:4px;">🔒 Private</span>`;
-
-       if (isMe) {
-         htmlContent += `
-         <div style="margin-bottom: 12px; text-align: right;">
-         <div style="font-size: 11px; color: #38bdf8; font-weight: bold; margin-bottom: 2px;">
-         ${sender} <span style="font-size:9px; color:#94a3b8; font-weight:normal;">(${role})</span> ${targetBadge}
-         </div>
-         <div style="display: inline-block; padding: 8px 12px; border-radius: 10px 10px 0px 10px; font-size: 13px; max-width: 80%; word-break: break-word; background-color: #0284c7; color: #ffffff !important; text-align: left; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">
-         ${escapeHtml(msg)}
-         </div>
-         <div style="font-size: 9px; color: #64748b; margin-top: 2px;">${time}</div>
-         </div>
-         `;
-       } else {
-         htmlContent += `
-         <div style="margin-bottom: 12px; text-align: left;">
-         <div style="font-size: 11px; color: #e2e8f0; font-weight: bold; margin-bottom: 2px;">
-         ${sender} <span style="font-size:9px; color:#94a3b8; font-weight:normal;">(${role})</span> ${targetBadge}
-         </div>
-         <div style="display: inline-block; padding: 8px 12px; border-radius: 10px 10px 10px 0px; font-size: 13px; max-width: 80%; word-break: break-word; background-color: #334155; color: #f8fafc !important; border: 1px solid #475569; box-shadow: 0 2px 4px rgba(0,0,0,0.3);">
-         ${escapeHtml(msg)}
-         </div>
-         <div style="font-size: 9px; color: #64748b; margin-top: 2px;">${time}</div>
-         </div>
-         `;
-       }
-     });
-
-     body.innerHTML = htmlContent;
-     body.scrollTop = body.scrollHeight;
-   } catch (err) {}
+   }
  }
 
- function escapeHtml(str) {
- return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+ function submitChatMessage() {
+   const input = document.getElementById('chat-input-text');
+   if (!input || !input.value.trim()) return;
+   input.value = '';
  }
 
  function handleChatKeyPress(event) {
- if (event.key === 'Enter') {
- event.preventDefault();
- submitChatMessage();
+   if (event.key === 'Enter') {
+     event.preventDefault();
+     submitChatMessage();
+   }
  }
- }
-
- function toggleChatPopup() {
- const popup = document.getElementById('v3-chat-popup');
- if (popup) {
- if (popup.style.display === 'flex' || !popup.classList.contains('chat-popup-hidden')) {
- popup.style.display = 'none';
- popup.classList.add('chat-popup-hidden');
- } else {
- popup.style.display = 'flex';
- popup.classList.remove('chat-popup-hidden');
- updateUnreadBadge(false);
- loadChatTargetOptions();
- fetchMessagesFromGS();
- }
- }
- }
-
- function updateUnreadBadge(show) {
- const btn = document.getElementById('chat-fab-btn');
- if (!btn) return;
- btn.style.position = 'relative';
-
- let badge = document.getElementById('chat-unread-badge');
-
- if (show) {
- if (!badge) {
- badge = document.createElement('div');
- badge.id = 'chat-unread-badge';
- badge.style.cssText = `
- position: absolute !important;
- top: -3px !important;
- right: -3px !important;
- width: 14px !important;
- height: 14px !important;
- background-color: #ef4444 !important;
- border: 2px solid #ffffff !important;
- border-radius: 50% !important;
- box-shadow: 0 0 10px rgba(239, 68, 68, 0.9) !important;
- z-index: 999999 !important;
- pointer-events: none !important;
- animation: pulseBadge 1.2s infinite alternate;
- `;
- btn.appendChild(badge);
- }
- } else {
- if (badge) badge.remove();
- }
- }
-
- document.addEventListener('DOMContentLoaded', function() {
- loadChatTargetOptions();
- });
-
- setInterval(function() {
- fetchMessagesFromGS();
- }, 3000);
  </script>
 </body>
 </html>
