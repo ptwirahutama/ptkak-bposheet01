@@ -630,7 +630,7 @@ flex-shrink: 0;
  <div style="background:#0f172a; padding:4px; border-radius:4px; border:1px solid var(--card-border); display:grid; grid-template-columns: 1fr 1fr; gap:4px; margin-bottom:3px;">
  <div class="form-group">
  <label><i class="fa-solid fa-calendar"></i> TANGGAL:</label>
- <input type="date" id="filterTanggalRekap" onchange="loadRekapanHarian()" style="padding:2px 4px; font-size:8.5px;">
+ <input type="date" id="filterTanggalRekap" onchange="loadRekapanHarian()" oninput="loadRekapanHarian()" style="padding:2px 4px; font-size:8.5px;">
  </div>
  <div class="form-group">
  <label><i class="fa-solid fa-helmet-safety"></i> PROYEK:</label>
@@ -708,7 +708,7 @@ flex-shrink: 0;
  // =========================================================================
  // 🔗 SIFANI RAHMA KAMALIA 23-1-2009 <3 (WEB APP API URL)
  // =========================================================================
- const GAS_API_URL = "https://script.google.com/macros/s/AKfycbzqr9XBbmVuw6Y1vkBYvRJrWKcOEkur-nejNHJj9MOTmwsxpUSbkV48Pm86bXQuE79j/exec";
+ const GAS_API_URL = "https://script.google.com/macros/s/AKfycbxn-fpB2gmp9Wk5X2dUNpvz4hg96RIdoXNykg0L_PbtKi3CmB2OwuLWSdgs3MO84FESLg/exec";
 
  async function callGasApiGet(action, params = {}) {
    let url = new URL(GAS_API_URL);
@@ -928,7 +928,7 @@ flex-shrink: 0;
  }
  }
 
- async function loadRekapanHarian() {
+async function loadRekapanHarian() {
    let userEmail = (currentUser && currentUser.email) ? currentUser.email : '';
    let selectedDate = document.getElementById('filterTanggalRekap') ? document.getElementById('filterTanggalRekap').value : '';
    let selectedProyekVal = document.getElementById('filterProyekRekap') ? document.getElementById('filterProyekRekap').value : 'ALL';
@@ -952,7 +952,8 @@ flex-shrink: 0;
      globalRekapanDataCache = data;
      isGlobalVolumeHidden = data.isVolumeHidden && currentUser && (currentUser.role === 'KONSULTAN' || currentUser.role === 'CLIENT');
      
-     populateFilterProyekDropdown(data.detailProyek);
+     // Mengisi dropdown menggunakan daftar seluruh proyek yang tersedia
+     populateFilterProyekDropdown(data.allProyekList || data.detailProyek);
      renderRekapanHarian(data);
    } catch (err) {
      console.error("Gagal muat rekap harian:", err);
@@ -1228,7 +1229,7 @@ function populateFilterProyekDropdown(proyekList) {
  if (currentVal) driverSelect.value = currentVal;
  }
 
- async function muatUlangDriver(emailUser) {
+  function muatUlangDriver(emailUser) {
  var email = emailUser || (typeof currentUser !== 'undefined' ? currentUser.email : '');
  try {
    let res = await callGasApiGet('getDropdownData', { email: email });
