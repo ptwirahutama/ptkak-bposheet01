@@ -799,16 +799,15 @@ window.onload = async function() {
  setInterval(updateClock, 1000);
  document.getElementById('tglRestok').valueAsDate = new Date();
  
- // Set default value filter tanggal ke hari ini (YYYY-MM-DD)
  let todayStr = new Date().toISOString().split('T')[0];
  let dateInput = document.getElementById('filterTanggalRekap');
  if (dateInput) dateInput.value = todayStr;
 
  loadSavedAdjustment();
 
- // Ambil daftar user untuk modal login
+ // Menggunakan POST untuk menghindari blokir CORS di Netlify
  try {
-   let users = await callGasApiGet('getUserListForLogin');
+   let users = await callGasApiPost('getUserListForLogin');
    if (users && users.length > 0) {
      populateUsers(users);
    } else {
@@ -820,7 +819,7 @@ window.onload = async function() {
    let select = document.getElementById('loginUserSelect');
    if (select) select.innerHTML = '<option value="">-- Gagal Terhubung ke Server --</option>';
  }
- };
+};
 
  function populateUsers(users) {
  let select = document.getElementById('loginUserSelect');
