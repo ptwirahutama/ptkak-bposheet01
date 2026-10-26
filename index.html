@@ -1254,12 +1254,12 @@ let selectMutu = document.getElementById('selectMutu');
  }
 
 async function muatUlangDriver(emailUser) {
- var email = emailUser || (typeof currentUser !== 'undefined' ? currentUser.email : '');
- try {
-   let res = await callGasApiGet('getDropdownData', { email: email });
-   if (res && res.drivers) renderDriverDropdown(res.drivers);
- } catch (e) {}
- }
+  var email = emailUser || (typeof currentUser !== 'undefined' ? currentUser.email : '');
+  try {
+    let res = await callGasApiGet('getDropdownData', { email: email });
+    if (res && res.drivers) renderDriverDropdown(res.drivers);
+  } catch (e) {}
+}
 
  document.addEventListener('DOMContentLoaded', function() {
  setTimeout(function() {
