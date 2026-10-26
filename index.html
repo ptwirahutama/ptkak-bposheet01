@@ -618,15 +618,25 @@ flex-shrink: 0;
  </div>
 </div>
 
+ <!-- KOLOM REKAP PRODUKSI DENGAN FILTER TANGGAL & PROYEK SESUAI PERMINTAAN -->
  <div id="colRekapan" style="display:flex; flex-direction:column; gap:5px; min-height:0;">
  <div class="dash-card" style="height:100%;">
  <div class="card-title">
- <span><i class="fa-solid fa-chart-line"></i> Rekap Produksi Hari Ini (Cut-off 05:30)</span>
- <div style="display:flex; gap:4px; align-items:center;">
- <select id="filterProyekClient" onchange="renderRekapanHarian(globalRekapanDataCache)" style="display:none; width:auto; padding:1px 4px; font-size:8px;">
+ <span><i class="fa-solid fa-chart-line"></i> Rekap Produksi (Cut-off 05:30)</span>
+ <button onclick="loadRekapanHarian()" class="btn-sec"><i class="fa-solid fa-arrows-rotate"></i></button>
+ </div>
+
+ <!-- FILTER TANGGAL & PROYEK -->
+ <div style="background:#0f172a; padding:4px; border-radius:4px; border:1px solid var(--card-border); display:grid; grid-template-columns: 1fr 1fr; gap:4px; margin-bottom:3px;">
+ <div class="form-group">
+ <label><i class="fa-solid fa-calendar"></i> TANGGAL:</label>
+ <input type="date" id="filterTanggalRekap" onchange="loadRekapanHarian()" style="padding:2px 4px; font-size:8.5px;">
+ </div>
+ <div class="form-group">
+ <label><i class="fa-solid fa-helmet-safety"></i> PROYEK:</label>
+ <select id="filterProyekRekap" onchange="loadRekapanHarian()" style="padding:2px 4px; font-size:8.5px;">
  <option value="ALL">-- Semua Proyek --</option>
  </select>
- <button onclick="loadRekapanHarian()" class="btn-sec"><i class="fa-solid fa-arrows-rotate"></i></button>
  </div>
  </div>
 
@@ -788,6 +798,11 @@ flex-shrink: 0;
  setInterval(updateClock, 1000);
  document.getElementById('tglRestok').valueAsDate = new Date();
  
+ // Set default value filter tanggal ke hari ini (YYYY-MM-DD)
+ let todayStr = new Date().toISOString().split('T')[0];
+ let dateInput = document.getElementById('filterTanggalRekap');
+ if (dateInput) dateInput.value = todayStr;
+
  loadSavedAdjustment();
 
  try {
@@ -862,14 +877,12 @@ flex-shrink: 0;
  let col1 = document.getElementById('colLogistik');
  let col2 = document.getElementById('colBatching');
  let adminToggle = document.getElementById('adminToggleContainer');
- let filterProyekSelect = document.getElementById('filterProyekClient');
 
  if (role === 'KONSULTAN' || role === 'CLIENT') {
  col1.style.display = 'none';
  col2.style.display = 'none';
  grid.classList.add('client-view');
  adminToggle.style.display = 'none';
- filterProyekSelect.style.display = 'inline-block';
 
  if (!autoPollingInterval) {
  autoPollingInterval = setInterval(loadRekapanHarian, 8000);
@@ -879,7 +892,6 @@ flex-shrink: 0;
  col2.style.display = 'flex';
  grid.classList.remove('client-view');
  adminToggle.style.display = 'flex';
- filterProyekSelect.style.display = 'none';
 
  let isHidden = await callGasApiGet('getHideVolumeStatus');
  updateAdminVolBtnUI(isHidden);
@@ -888,7 +900,6 @@ flex-shrink: 0;
  col2.style.display = 'flex';
  grid.classList.remove('client-view');
  adminToggle.style.display = 'none';
- filterProyekSelect.style.display = 'none';
  }
  }
 
@@ -919,8 +930,16 @@ flex-shrink: 0;
 
  async function loadRekapanHarian() {
    let userEmail = (currentUser && currentUser.email) ? currentUser.email : '';
+   let selectedDate = document.getElementById('filterTanggalRekap') ? document.getElementById('filterTanggalRekap').value : '';
+   let selectedProyekVal = document.getElementById('filterProyekRekap') ? document.getElementById('filterProyekRekap').value : 'ALL';
+
    try {
-     let data = await callGasApiGet('getRekapanHarian', { email: userEmail });
+     let data = await callGasApiGet('getRekapanHarian', { 
+       email: userEmail, 
+       date: selectedDate, 
+       proyek: selectedProyekVal 
+     });
+
      if (globalRekapanDataCache && data.totalRit > lastKnownRitCount) {
        playTruckAlertSound();
        let latestLog = data.rawLogs[data.rawLogs.length - 1];
@@ -941,114 +960,116 @@ flex-shrink: 0;
  }
 
  function populateFilterProyekDropdown(proyekList) {
- let select = document.getElementById('filterProyekClient');
- let currentVal = select.value;
- select.innerHTML = '<option value="ALL">-- Semua Proyek --</option>';
- (proyekList || []).forEach(p => {
- let opt = document.createElement('option');
- opt.value = p.proyek;
- opt.innerText = p.proyek;
- select.appendChild(opt);
- });
- select.value = currentVal;
+   let select = document.getElementById('filterProyekRekap');
+   if (!select) return;
+   let currentVal = select.value;
+   select.innerHTML = '<option value="ALL">-- Semua Proyek --</option>';
+   
+   let uniqueProyek = {};
+   (proyekList || []).forEach(p => {
+     if (!uniqueProyek[p.proyek]) {
+       uniqueProyek[p.proyek] = true;
+       let opt = document.createElement('option');
+       opt.value = p.proyek;
+       opt.innerText = p.proyek;
+       select.appendChild(opt);
+     }
+   });
+   select.value = currentVal;
  }
 
  function renderRekapanHarian(data) {
- if (!data) return;
+   if (!data) return;
 
- let filterValue = document.getElementById('filterProyekClient').value;
- let displayVolumeText = isGlobalVolumeHidden ? '***' : (data.totalVolume || 0).toFixed(2);
+   let displayVolumeText = isGlobalVolumeHidden ? '***' : (data.totalVolume || 0).toFixed(2);
 
- document.getElementById('summaryProyek').innerText = data.totalProyek || 0;
- document.getElementById('summaryVolume').innerText = displayVolumeText;
- document.getElementById('summaryRit').innerText = data.totalRit || 0;
+   document.getElementById('summaryProyek').innerText = data.totalProyek || 0;
+   document.getElementById('summaryVolume').innerText = displayVolumeText;
+   document.getElementById('summaryRit').innerText = data.totalRit || 0;
 
- let thVol = document.getElementById('thHeaderVol');
- if (isGlobalVolumeHidden) {
- thVol.style.display = 'none';
- } else {
- thVol.style.display = '';
- }
+   let thVol = document.getElementById('thHeaderVol');
+   if (thVol) thVol.style.display = isGlobalVolumeHidden ? 'none' : '';
 
- let tbody = document.getElementById('tabelRekapanBody');
- tbody.innerHTML = '';
+   let tbody = document.getElementById('tabelRekapanBody');
+   tbody.innerHTML = '';
 
- if (!data.detailProyek || data.detailProyek.length === 0) {
- tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; color:var(--text-muted);">Belum ada pengiriman hari ini.</td></tr>';
- renderDrillDownLogs([]);
- return;
- }
+   if (!data.detailProyek || data.detailProyek.length === 0) {
+     tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; color:var(--text-muted);">Belum ada pengiriman pada tanggal ini.</td></tr>';
+     renderDrillDownLogs([]);
+     return;
+   }
 
- data.detailProyek.forEach((p, idx) => {
- if (filterValue !== 'ALL' && p.proyek !== filterValue) return;
+   data.detailProyek.forEach((p, idx) => {
+     let tr = document.createElement('tr');
+     tr.className = 'tr-clickable';
+     tr.onclick = () => filterLogByProyek(p.proyek);
 
- let tr = document.createElement('tr');
- tr.className = 'tr-clickable';
- tr.onclick = () => filterLogByProyek(p.proyek);
+     let volCell = isGlobalVolumeHidden ? '' : `<td style="text-align:right;"><b>${p.volume.toFixed(1)}</b></td>`;
 
- let volCell = isGlobalVolumeHidden ? '' : `<td style="text-align:right;"><b>${p.volume.toFixed(1)}</b></td>`;
+     // Keterangan tanggal ditampilkan di bawah nama customer sesuai permintaan Anda
+     tr.innerHTML = `
+       <td style="text-align:center;">${idx + 1}</td>
+       <td style="text-align:left;">
+         <b>${p.proyek}</b><br>
+         <span style="color:var(--text-muted); font-size:8px;">${p.customer}</span><br>
+         <span style="color:#38bdf8; font-size:7.5px; font-weight:700;"><i class="fa-solid fa-calendar-days"></i> Tgl: ${p.tanggal || data.tanggal}</span>
+       </td>
+       <td style="text-align:center;"><span style="background:#2563eb; color:white; padding:1px 3px; border-radius:3px; font-size:8px;">${p.mutu}</span></td>
+       ${volCell}
+       <td style="text-align:right;"><b>${p.rit} Rit</b></td>
+     `;
+     tbody.appendChild(tr);
+   });
 
- tr.innerHTML = `
- <td style="text-align:center;">${idx + 1}</td>
- <td style="text-align:left;"><b>${p.proyek}</b><br><span style="color:var(--text-muted); font-size:8px;">${p.customer}</span></td>
- <td style="text-align:center;"><span style="background:#2563eb; color:white; padding:1px 3px; border-radius:3px; font-size:8px;">${p.mutu}</span></td>
- ${volCell}
- <td style="text-align:right;"><b>${p.rit} Rit</b></td>
- `;
- tbody.appendChild(tr);
- });
+   let filteredLogs = data.rawLogs || [];
+   if (selectedProyekFilter !== 'ALL') {
+     filteredLogs = filteredLogs.filter(l => l.proyek === selectedProyekFilter);
+   }
 
- let filteredLogs = data.rawLogs || [];
- if (selectedProyekFilter !== 'ALL') {
- filteredLogs = filteredLogs.filter(l => l.proyek === selectedProyekFilter);
- } else if (filterValue !== 'ALL') {
- filteredLogs = filteredLogs.filter(l => l.proyek === filterValue);
- }
-
- renderDrillDownLogs(filteredLogs);
+   renderDrillDownLogs(filteredLogs);
  }
 
  function filterLogByProyek(namaProyek) {
- if (selectedProyekFilter === namaProyek) {
- selectedProyekFilter = 'ALL';
- document.getElementById('badgeProyekSelected').innerText = '';
- } else {
- selectedProyekFilter = namaProyek;
- document.getElementById('badgeProyekSelected').innerText = '[' + namaProyek + ']';
- }
- renderRekapanHarian(globalRekapanDataCache);
+   if (selectedProyekFilter === namaProyek) {
+     selectedProyekFilter = 'ALL';
+     document.getElementById('badgeProyekSelected').innerText = '';
+   } else {
+     selectedProyekFilter = namaProyek;
+     document.getElementById('badgeProyekSelected').innerText = '[' + namaProyek + ']';
+   }
+   renderRekapanHarian(globalRekapanDataCache);
  }
 
  function renderDrillDownLogs(logs) {
- let tbody = document.getElementById('tabelDrillDownBody');
- tbody.innerHTML = '';
+   let tbody = document.getElementById('tabelDrillDownBody');
+   tbody.innerHTML = '';
 
- if (!logs || logs.length === 0) {
- tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; color:var(--text-muted);">Tidak ada log ritase pengiriman.</td></tr>';
- return;
- }
+   if (!logs || logs.length === 0) {
+     tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; color:var(--text-muted);">Tidak ada log ritase pengiriman.</td></tr>';
+     return;
+   }
 
- logs.forEach((l, idx) => {
- let tr = document.createElement('tr');
- let volCell = isGlobalVolumeHidden ? '' : `<td style="text-align:right;"><b>${l.volume.toFixed(1)} m³</b></td>`;
+   logs.forEach((l, idx) => {
+     let tr = document.createElement('tr');
+     let volCell = isGlobalVolumeHidden ? '' : `<td style="text-align:right;"><b>${l.volume.toFixed(1)} m³</b></td>`;
 
- tr.innerHTML = `
- <td style="text-align:center;">${idx + 1}</td>
- <td style="text-align:center; font-family:'JetBrains Mono';">${l.jam}</td>
- <td style="text-align:center;"><b style="color:#38bdf8;">${l.noTM}</b></td>
- <td style="text-align:left;">
-   <b>${l.noPlat}</b><br>
-   <span style="color:var(--text-muted); font-size:8px;">${l.driver}</span><br>
-   <span style="color:#fbbf24; font-size:8px; font-weight:700;"><i class="fa-solid fa-helmet-safety"></i> Proyek: ${l.proyek}</span>
- </td>
- <td style="text-align:center;"><span style="background:#059669; color:white; padding:1px 3px; border-radius:3px; font-size:8px;">${l.mutu}</span></td>
- ${volCell}
- `;
- tbody.appendChild(tr);
- });
+     tr.innerHTML = `
+       <td style="text-align:center;">${idx + 1}</td>
+       <td style="text-align:center; font-family:'JetBrains Mono';">${l.jam}</td>
+       <td style="text-align:center;"><b style="color:#38bdf8;">${l.noTM}</b></td>
+       <td style="text-align:left;">
+         <b>${l.noPlat}</b><br>
+         <span style="color:var(--text-muted); font-size:8px;">${l.driver}</span><br>
+         <span style="color:#fbbf24; font-size:8px; font-weight:700;"><i class="fa-solid fa-helmet-safety"></i> Proyek: ${l.proyek}</span>
+       </td>
+       <td style="text-align:center;"><span style="background:#059669; color:white; padding:1px 3px; border-radius:3px; font-size:8px;">${l.mutu}</span></td>
+       ${volCell}
+     `;
+     tbody.appendChild(tr);
+   });
 
- let colVols = document.querySelectorAll('.col-vol-data');
- colVols.forEach(el => el.style.display = isGlobalVolumeHidden ? 'none' : '');
+   let colVols = document.querySelectorAll('.col-vol-data');
+   colVols.forEach(el => el.style.display = isGlobalVolumeHidden ? 'none' : '');
  }
 
  function simpanParameterAdjustment() {
