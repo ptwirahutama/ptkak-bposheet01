@@ -189,7 +189,7 @@ flex-shrink: 0;
  .table-container { flex: 1; overflow-y: auto; border: 1px solid var(--card-border); border-radius: 4px; min-height: 0; }
  table { width: 100%; border-collapse: collapse; font-size: 9px; text-align: right; }
  th { background: #0f172a; color: var(--text-muted); font-weight: 700; padding: 3px 4px; position: sticky; top: 0; border-bottom: 1px solid var(--card-border); font-size: 8.5px; }
- td { padding: 2.5px 4px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+ td { padding: 2.5px 4px; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: middle; }
  th:first-child, td:first-child { text-align: left; }
  .bg-akumulasi { background: rgba(245, 158, 11, 0.15); color: #fbbf24; font-weight: 700; }
  .bg-mandiri { background: rgba(16, 185, 129, 0.15); color: #34d399; font-weight: 700; }
@@ -213,11 +213,14 @@ flex-shrink: 0;
  .tr-clickable { cursor: pointer; transition: background 0.2s; }
  .tr-clickable:hover { background: rgba(56, 189, 248, 0.1); }
 
- /* CHAT FAB & POPUP STYLES */
+ /* ===================================================
+  * PERUBAHAN: TOMBOL CHAT & POPUP DIPINDAH KE KIRI
+  * =================================================== */
  #chat-fab-btn {
  position: fixed !important;
  bottom: 25px !important;
- right: 25px !important;
+ left: 25px !important;
+ right: auto !important;
  z-index: 999999 !important;
  width: 58px;
  height: 58px;
@@ -250,7 +253,8 @@ flex-shrink: 0;
  #v3-chat-popup {
  position: fixed !important;
  bottom: 95px !important;
- right: 25px !important;
+ left: 25px !important;
+ right: auto !important;
  width: 340px;
  height: 450px;
  background: #1e293b;
@@ -296,8 +300,8 @@ flex-shrink: 0;
  .dashboard-grid { grid-template-columns: 1fr !important; height: auto !important; overflow: visible !important; }
  .dash-card { min-height: auto !important; overflow: visible !important; }
  .table-container { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
- #chat-fab-btn { bottom: 15px !important; right: 15px !important; width: 48px !important; height: 48px !important; font-size: 18px !important; }
- #v3-chat-popup { bottom: 70px !important; right: 10px !important; left: 10px !important; width: auto !important; }
+ #chat-fab-btn { bottom: 15px !important; left: 15px !important; right: auto !important; width: 48px !important; height: 48px !important; font-size: 18px !important; }
+ #v3-chat-popup { bottom: 70px !important; left: 10px !important; right: auto !important; width: auto !important; }
  }
  </style>
 </head>
@@ -690,11 +694,10 @@ flex-shrink: 0;
 
  <script>
  // =========================================================================
- // 🔗 MASUKKAN URL GOOGLE APPS SCRIPT (WEB APP API URL) ANDA DI SINI
+ // 🔗 URL GOOGLE APPS SCRIPT (WEB APP API URL)
  // =========================================================================
  const GAS_API_URL = "https://script.google.com/macros/s/AKfycbx5Otowa-Ijvg3DTJHkRzOM2DESlzIbU84E799vRhRtf3m3NsAEWT9ZonN5QuvRn34awg/exec";
 
- // Helper universal pengirim request ke GAS (GET & POST)
  async function callGasApiGet(action, params = {}) {
    let url = new URL(GAS_API_URL);
    url.searchParams.append('action', action);
@@ -981,14 +984,14 @@ flex-shrink: 0;
  tr.className = 'tr-clickable';
  tr.onclick = () => filterLogByProyek(p.proyek);
 
- let volCell = isGlobalVolumeHidden ? '' : `<td style="text-align:right;"><b>${p.volume.toFixed(1)}</b></td>`;
+ let volCell = isGlobalVolumeHidden ? '' : `<td style="text-align:right; vertical-align:middle;"><b>${p.volume.toFixed(1)}</b></td>`;
 
  tr.innerHTML = `
- <td style="text-align:center;">${idx + 1}</td>
- <td style="text-align:left;"><b>${p.proyek}</b><br><span style="color:var(--text-muted); font-size:8px;">${p.customer}</span></td>
- <td style="text-align:center;"><span style="background:#2563eb; color:white; padding:1px 3px; border-radius:3px; font-size:8px;">${p.mutu}</span></td>
+ <td style="text-align:center; vertical-align:middle;">${idx + 1}</td>
+ <td style="text-align:left; vertical-align:middle;"><b>${p.proyek}</b><br><span style="color:var(--text-muted); font-size:8px;">${p.customer}</span></td>
+ <td style="text-align:center; vertical-align:middle;"><span style="background:#2563eb; color:white; padding:1px 3px; border-radius:3px; font-size:8px;">${p.mutu}</span></td>
  ${volCell}
- <td style="text-align:right;"><b>${p.rit} Rit</b></td>
+ <td style="text-align:right; vertical-align:middle;"><b>${p.rit} Rit</b></td>
  `;
  tbody.appendChild(tr);
  });
@@ -1025,14 +1028,14 @@ flex-shrink: 0;
 
  logs.forEach((l, idx) => {
  let tr = document.createElement('tr');
- let volCell = isGlobalVolumeHidden ? '' : `<td style="text-align:right;"><b>${l.volume.toFixed(1)} m³</b></td>`;
+ let volCell = isGlobalVolumeHidden ? '' : `<td style="text-align:right; vertical-align:middle;"><b>${l.volume.toFixed(1)} m³</b></td>`;
 
  tr.innerHTML = `
- <td style="text-align:center;">${idx + 1}</td>
- <td style="text-align:center; font-family:'JetBrains Mono';">${l.jam}</td>
- <td style="text-align:center;"><b style="color:#38bdf8;">${l.noTM}</b></td>
- <td style="text-align:left;"><b>${l.noPlat}</b><br><span style="color:var(--text-muted); font-size:8px;">${l.driver}</span></td>
- <td style="text-align:center;"><span style="background:#059669; color:white; padding:1px 3px; border-radius:3px; font-size:8px;">${l.mutu}</span></td>
+ <td style="text-align:center; vertical-align:middle;">${idx + 1}</td>
+ <td style="text-align:center; vertical-align:middle; font-family:'JetBrains Mono';">${l.jam}</td>
+ <td style="text-align:center; vertical-align:middle;"><b style="color:#38bdf8;">${l.noTM}</b></td>
+ <td style="text-align:left; vertical-align:middle;"><b>${l.noPlat}</b><br><span style="color:var(--text-muted); font-size:8px;">${l.driver}</span></td>
+ <td style="text-align:center; vertical-align:middle;"><span style="background:#059669; color:white; padding:1px 3px; border-radius:3px; font-size:8px;">${l.mutu}</span></td>
  ${volCell}
  `;
  tbody.appendChild(tr);
