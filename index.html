@@ -1253,7 +1253,7 @@ let selectMutu = document.getElementById('selectMutu');
  if (currentVal) driverSelect.value = currentVal;
  }
 
-  function muatUlangDriver(emailUser) {
+async function muatUlangDriver(emailUser) {
  var email = emailUser || (typeof currentUser !== 'undefined' ? currentUser.email : '');
  try {
    let res = await callGasApiGet('getDropdownData', { email: email });
