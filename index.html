@@ -425,11 +425,10 @@ flex-shrink: 0;
  <label for="proyek">Nama Proyek:</label>
  <select id="proyek"></select>
  </div>
-<div class="grid-2">
+ <div class="grid-2">
  <div class="form-group">
  <label for="nominalSlump">Nominal Slump:</label>
- <input type="text" id="nominalSlump" list="listNominalSlump" placeholder="Pilih / Ketik Slump">
- <datalist id="listNominalSlump"></datalist>
+ <input type="text" id="nominalSlump" placeholder="12 ± 2 cm">
  </div>
  <div class="form-group">
  <label for="noTM">No. Mixer (TM):</label>
@@ -709,7 +708,7 @@ flex-shrink: 0;
  // =========================================================================
  // 🔗 SIFANI RAHMA KAMALIA 23-1-2009 <3 (WEB APP API URL)
  // =========================================================================
- const GAS_API_URL = "https://script.google.com/macros/s/AKfycbwVUcI01tr3-I4_t-gwHW3wyX6_OMM8nJQ_Zt_k3qR2EpAvC19wt2_OELhTat3edI_gNw/exec";
+ const GAS_API_URL = "https://script.google.com/macros/s/AKfycbyDNKBv4ZcyKT48Kpc-xwob1ofg00bojfcULndUFMp2uw1spm-4O4fG1PgnranuL0j6YA/exec";
 
  async function callGasApiGet(action, params = {}) {
    let url = new URL(GAS_API_URL);
@@ -1173,7 +1172,7 @@ function populateFilterProyekDropdown(proyekList) {
  dataTMGlobal.forEach(tm => selectTM.options.add(new Option(tm.noTM, tm.noTM)));
  }
 
-let selectMutu = document.getElementById('selectMutu');
+ let selectMutu = document.getElementById('selectMutu');
  if (selectMutu) {
  selectMutu.innerHTML = '<option value="">-- Pilih Mutu --</option>';
  (data.mutuBeton || []).forEach(mb => {
@@ -1182,19 +1181,6 @@ let selectMutu = document.getElementById('selectMutu');
  opt.value = mb;
  opt.innerText = mb;
  selectMutu.appendChild(opt);
- }
- });
- }
-
- // TAMBAHAN: Mengisi pilihan Datalist Nominal Slump dari Spreadsheet
- let listSlumpDatalist = document.getElementById('listNominalSlump');
- if (listSlumpDatalist && data.nominalSlumpList) {
- listSlumpDatalist.innerHTML = '';
- data.nominalSlumpList.forEach(slumpVal => {
- if (slumpVal) {
- let opt = document.createElement('option');
- opt.value = slumpVal;
- listSlumpDatalist.appendChild(opt);
  }
  });
  }
