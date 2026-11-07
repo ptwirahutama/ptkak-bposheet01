@@ -128,6 +128,7 @@
     .header-left .company-logo-img {
       height: 36px;
       width: auto;
+      max-width: 120px;
       object-fit: contain;
       flex-shrink: 0;
       display: block;
@@ -236,7 +237,6 @@
       color: var(--text-secondary);
     }
 
-    /* Tombol Ikon Header (Theme Toggle & Logout) */
     .header-icon-btn {
       background: var(--bg-input);
       color: var(--text-primary);
@@ -365,6 +365,15 @@
       opacity: 0.85;
     }
 
+    /* Mencegah background input berubah putih saat Autofill di Chrome */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus {
+      -webkit-text-fill-color: #ffffff !important;
+      -webkit-box-shadow: 0 0 0px 1000px #09090b inset !important;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+
     /* =========================================================================
        TOMBOL AKSI UTAMA & TOMBOL TOGGLE PARAMETER
        ========================================================================= */
@@ -430,7 +439,6 @@
       background: var(--bg-hover);
     }
 
-    /* Toggle Parameter (ADJ AIR & ADJ S/A) dengan Indikator Titik Lampu */
     .btn-toggle {
       padding: 5px 8px;
       font-size: 9px;
@@ -601,7 +609,6 @@
       background: var(--bg-hover);
     }
 
-    /* Status Badge Minimalis untuk Mutu Beton */
     .mutu-pill {
       display: inline-flex;
       align-items: center;
@@ -624,7 +631,6 @@
       flex-shrink: 0;
     }
 
-    /* Kartu Mini Summary Rekap */
     .summary-mini-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -694,6 +700,7 @@
     .login-header .company-logo-img {
       height: 48px;
       width: auto;
+      max-width: 180px;
       object-fit: contain;
       margin: 0 auto 16px auto;
       display: block;
@@ -727,23 +734,22 @@
       margin-bottom: 6px;
     }
 
-    .login-field select,
     .login-field input {
       width: 100%;
-      background-color: #09090b;
+      background-color: #09090b !important;
       border: 1px solid #27272a;
       border-radius: 8px;
       padding: 10px 12px;
       font-size: 13px;
-      color: #ffffff;
+      color: #ffffff !important;
       outline: none;
     }
 
-    .login-field select {
-      padding-right: 34px;
+    .login-field input::placeholder {
+      color: #52525b;
+      letter-spacing: normal;
     }
 
-    .login-field select:focus,
     .login-field input:focus {
       border-color: #52525b;
     }
@@ -778,7 +784,7 @@
 
     .btn-login-submit {
       width: 100%;
-      margin-top: 24px;
+      margin-top: 20px;
       padding: 11px 16px;
       border-radius: 8px;
       background: #f4f4f0;
@@ -787,7 +793,7 @@
       font-weight: 600;
       border: none;
       cursor: pointer;
-      transition: background 0.15s ease;
+      transition: background 0.15s ease, opacity 0.15s ease;
     }
 
     .btn-login-submit:hover {
@@ -935,27 +941,25 @@
 <body>
 
   <!-- =========================================================================
-       MODAL LOGIN FULL-SCREEN (21ST.DEV MINIMALIST + DOT PATTERN)
+       MODAL LOGIN FULL-SCREEN (KETIK NAMA / USER ID & PIN)
        ========================================================================= -->
   <div id="loginModal" class="modal-overlay">
     <div class="modal-box">
       <div class="login-header">
         <img class="company-logo-img" alt="Logo Perusahaan">
         <h2 class="login-title">Autentikasi Akun</h2>
-        <p class="login-subtitle">Silakan pilih User ID dan masukkan PIN Anda.</p>
+        <p class="login-subtitle">Ketik Nama / User ID dan masukkan PIN Anda.</p>
       </div>
 
       <div class="login-field">
-        <label for="loginUserSelect">User ID / Akun</label>
-        <select id="loginUserSelect">
-          <option value="">Memuat daftar akun...</option>
-        </select>
+        <label for="loginUserInput">User ID / Nama Akun</label>
+        <input type="text" id="loginUserInput" placeholder="Ketik Nama (cth: Agung / Nur)" autocomplete="off" onkeypress="if(event.key==='Enter') document.getElementById('loginPinInput').focus()">
       </div>
 
       <div class="login-field">
         <label for="loginPinInput">PIN Security</label>
         <div class="pin-input-wrapper">
-          <input type="password" id="loginPinInput" placeholder="••••" maxlength="8" onkeypress="if(event.key==='Enter') prosesLogin()">
+          <input type="password" id="loginPinInput" placeholder="••••" maxlength="8" autocomplete="new-password" onkeypress="if(event.key==='Enter') prosesLogin()">
           <button type="button" class="pin-toggle-btn" onclick="togglePinVisibility()" title="Tampilkan/Sembunyikan PIN">
             <svg id="eyeIconOpen" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
@@ -973,7 +977,7 @@
 
       <div id="loginError" style="color:#ef4444; font-size:11.5px; margin-top:8px; display:none; font-weight:500;"></div>
 
-      <button class="btn-login-submit" onclick="prosesLogin()">Masuk Sistem</button>
+      <button id="btnLoginSubmit" class="btn-login-submit" onclick="prosesLogin()">Masuk Sistem</button>
     </div>
   </div>
 
@@ -1443,6 +1447,15 @@
     const SESSION_STORAGE_KEY = "bp_active_session";
     const THEME_STORAGE_KEY = "bp_theme_mode";
 
+    // Daftar akun cadangan sesuai Spreadsheet CONFIG_USER agar pencarian Nama -> Email selalu instan
+    let cachedUsersForLogin = [
+      { email: "ptwirahutama@gmail.com", code: "A_001", rawName: "Agung", nama: "A_001 Agung", role: "ADMIN" },
+      { email: "bpoptkak@gmail.com", code: "O_001", rawName: "Nur", nama: "O_001 Nur", role: "OPERATOR" },
+      { email: "fadlanrasheed@gmail.com", code: "A_002", rawName: "Fadhlan", nama: "A_002 Fadhlan", role: "ADMIN" },
+      { email: "Fuadprasetyo@gmail.com", code: "A_003", rawName: "Fuad", nama: "A_003 Fuad", role: "ADMIN" },
+      { email: "labbetonkak@gmail.com", code: "T_001", rawName: "Teknisi", nama: "T_001 Teknisi", role: "CLIENT" }
+    ];
+
     async function callGasApiGet(action, params = {}) {
       let url = new URL(GAS_API_URL);
       url.searchParams.append('action', action);
@@ -1563,6 +1576,60 @@
     }
 
     // =========================================================================
+    // SINKRONISASI DAFTAR USER DARI SPREADSHEET CONFIG_USER
+    // =========================================================================
+    async function syncUserListFromServer() {
+      try {
+        // Coba ambil via GET terlebih dahulu (kompatibel dengan semua versi Code.gs)
+        let users = await callGasApiGet('getUserListForLogin');
+        if (!users || !Array.isArray(users) || users.length === 0) {
+          users = await callGasApiPost('getUserListForLogin');
+        }
+        if (users && Array.isArray(users) && users.length > 0) {
+          cachedUsersForLogin = users.map(u => {
+            let parts = String(u.nama || '').trim().split(/\s+/);
+            let code = parts.length > 1 ? parts[0] : '';
+            let rawName = parts.length > 1 ? parts.slice(1).join(' ') : String(u.nama || '').trim();
+            return {
+              email: String(u.email || '').trim(),
+              nama: String(u.nama || '').trim(),
+              code: code,
+              rawName: rawName,
+              role: String(u.role || 'OPERATOR').trim()
+            };
+          });
+        }
+      } catch (err) {
+        console.warn("Menggunakan daftar akun cache lokal:", err);
+      }
+    }
+
+    // Mencocokkan Nama / Kode User / Email yang diketik user menjadi Email CONFIG_USER
+    function resolveTypedUserToEmail(typedInput) {
+      let clean = String(typedInput || '').trim().toLowerCase();
+      if (!clean) return '';
+
+      for (let u of cachedUsersForLogin) {
+        let emailLow = String(u.email || '').trim().toLowerCase();
+        let fullLow = String(u.nama || '').trim().toLowerCase();
+        let codeLow = String(u.code || '').trim().toLowerCase();
+        let nameLow = String(u.rawName || '').trim().toLowerCase();
+
+        if (
+          clean === nameLow ||
+          clean === codeLow ||
+          clean === fullLow ||
+          clean === emailLow ||
+          (fullLow && fullLow.split(/\s+/).includes(clean))
+        ) {
+          return u.email;
+        }
+      }
+      // Jika tidak ditemukan di daftar, kirimkan input asli (barangkali user mengetik email baru)
+      return typedInput.trim();
+    }
+
+    // =========================================================================
     // INISIALISASI HALAMAN, INJEKSI LOGO & PENGECEKAN SESI LOGIN (AUTO-STAY)
     // =========================================================================
     document.addEventListener('DOMContentLoaded', function() {
@@ -1606,36 +1673,22 @@
         localStorage.removeItem(SESSION_STORAGE_KEY);
       }
 
-      // Tetap muat daftar user untuk dropdown Login
-      try {
-        let users = await callGasApiPost('getUserListForLogin');
-        if (users && Array.isArray(users) && users.length > 0) {
-          populateUsers(users);
-        } else {
-          let select = document.getElementById('loginUserSelect');
-          if (select) select.innerHTML = '<option value="">-- Data User Kosong / Format Salah --</option>';
-        }
-      } catch (err) {
-        let select = document.getElementById('loginUserSelect');
-        if (select) select.innerHTML = '<option value="">-- Error: ' + err.message + ' --</option>';
-      }
+      // Sinkronisasi daftar user dari Spreadsheet di belakang layar
+      syncUserListFromServer();
     };
 
-    function populateUsers(users) {
-      let select = document.getElementById('loginUserSelect');
-      select.innerHTML = '';
-      (users || []).forEach(u => {
-        let opt = document.createElement('option');
-        opt.value = u.email;
-        opt.innerText = u.nama + " [" + u.role + "]";
-        select.appendChild(opt);
-      });
-    }
-
     async function prosesLogin() {
-      let email = document.getElementById('loginUserSelect').value;
-      let pin = document.getElementById('loginPinInput').value;
+      let userEl = document.getElementById('loginUserInput') || document.getElementById('loginUserSelect');
+      let typedUser = userEl ? userEl.value.trim() : '';
+      let pin = document.getElementById('loginPinInput').value.trim();
       let errDiv = document.getElementById('loginError');
+      let btnSubmit = document.getElementById('btnLoginSubmit');
+
+      if (!typedUser) {
+        errDiv.innerText = "Ketik Nama atau User ID Anda terlebih dahulu!";
+        errDiv.style.display = "block";
+        return;
+      }
 
       if (!pin) {
         errDiv.innerText = "Masukkan PIN Security Anda!";
@@ -1643,9 +1696,21 @@
         return;
       }
 
+      errDiv.style.display = "none";
+      if (btnSubmit) {
+        btnSubmit.disabled = true;
+        btnSubmit.style.opacity = "0.6";
+        btnSubmit.innerText = "Memverifikasi...";
+      }
+
       try {
-        let res = await callGasApiPost('checkPinLogin', { email: email, pin: pin });
-        if (res.success) {
+        await syncUserListFromServer();
+
+        // Cocokkan ketikan Nama (cth: Agung / Nur / A_001) ke Email CONFIG_USER
+        let resolvedEmail = resolveTypedUserToEmail(typedUser);
+
+        let res = await callGasApiPost('checkPinLogin', { email: resolvedEmail, pin: pin });
+        if (res && res.success) {
           currentUser = res.user;
           document.getElementById('displayOperatorName').innerText = res.user.nama;
           document.getElementById('displayUserRole').innerText = '[' + res.user.role + ']';
@@ -1666,12 +1731,18 @@
           loadAllDataForUser(res.user.email);
           applyRolePermissions(res.user.role);
         } else {
-          errDiv.innerText = res.msg;
+          errDiv.innerText = (res && res.msg) ? res.msg : "Nama User atau PIN tidak sesuai!";
           errDiv.style.display = "block";
         }
       } catch (err) {
-        errDiv.innerText = "Terjadi kesalahan koneksi!";
+        errDiv.innerText = "Terjadi kesalahan koneksi ke server!";
         errDiv.style.display = "block";
+      } finally {
+        if (btnSubmit) {
+          btnSubmit.disabled = false;
+          btnSubmit.style.opacity = "1";
+          btnSubmit.innerText = "Masuk Sistem";
+        }
       }
     }
 
@@ -2149,9 +2220,9 @@
     function onKodeMixChange() { hitungSemua(); }
 
     function getSiloBarColor(pct) {
-      if (pct < 20) return '#ef4444'; // Merah (Kritis)
-      if (pct < 45) return '#f59e0b'; // Amber (Menengah)
-      return '#10b981';               // Emerald (Aman)
+      if (pct < 20) return '#ef4444';
+      if (pct < 45) return '#f59e0b';
+      return '#10b981';
     }
 
     function updateStokUI(stok) {
@@ -2686,7 +2757,7 @@
     }
 
     function escapeHtml(str) {
-      return str.replace(/&/g, "&").replace(/</g, "<").replace(/>/g, ">").replace(/"/g, """).replace(/'/g, "'");
+      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
     }
 
     function handleChatKeyPress(event) {
