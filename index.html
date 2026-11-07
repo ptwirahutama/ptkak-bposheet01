@@ -1148,7 +1148,7 @@
         </div>
 
         <!-- LEVEL SILO SEMEN -->
-        <div class="dash-card" style="flex:1;">
+        <div class="dash-card">
           <div class="card-title">
             <span><i class="fa-solid fa-database"></i> Level Silo Semen</span>
             <button onclick="refreshStokSiloManual()" class="btn-sec" title="Refresh Stok"><i class="fa-solid fa-rotate"></i></button>
@@ -1175,16 +1175,16 @@
               <div class="silo-header"><span>Silo Fly Ash</span><b id="stokFA">0 Kg</b></div>
               <div class="silo-bar-bg"><div class="silo-bar-fill" id="barFA" style="width: 0%;"></div></div>
             </div>
-          </div>
 
-          <div class="silo-item" style="margin-top:auto; border-color: var(--border-focus);">
-            <div class="silo-header" style="margin-bottom:0; font-size: 9px; font-weight: 700;">
-              <span style="color: var(--text-primary);"><i class="fa-solid fa-calculator"></i> TOTAL SEMEN (SILO 1 - 4)</span>
-              <b id="stokTotalSemen" style="color: var(--accent-amber); font-size: 10px;">0 Kg</b>
+            <!-- KOTAK TOTAL SEMEN PINDAH KE SINI (DI DALAM SILO-CONTAINER) -->
+            <div class="silo-item" style="border-color: var(--border-focus); margin-top: 2px;">
+              <div class="silo-header" style="margin-bottom:0; font-size: 9px; font-weight: 700;">
+                <span style="color: var(--text-primary);"><i class="fa-solid fa-calculator"></i> TOTAL SEMEN (SILO 1 - 4)</span>
+                <b id="stokTotalSemen" style="color: var(--accent-amber); font-size: 10px;">0 Kg</b>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
       <!-- KOLOM 2 (TENGAH): PARAMETER FORMULA, KOREKSI MOISTURE & MATRIKS -->
       <div id="colBatching" style="display:flex; flex-direction:column; gap:6px; min-height:0;">
